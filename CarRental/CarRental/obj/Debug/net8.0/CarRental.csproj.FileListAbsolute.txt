@@ -166,3 +166,4 @@ Z:\Group Project\CarRental\CarRental\obj\Debug\net8.0\refint\CarRental.dll
 Z:\Group Project\CarRental\CarRental\obj\Debug\net8.0\CarRental.pdb
 Z:\Group Project\CarRental\CarRental\obj\Debug\net8.0\CarRental.genruntimeconfig.cache
 Z:\Group Project\CarRental\CarRental\obj\Debug\net8.0\ref\CarRental.dll
+Z:\Group Project\CarRental\CarRental\obj\Debug\net8.0\CarRental.sourcelink.json
