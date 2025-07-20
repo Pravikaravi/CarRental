@@ -13,8 +13,24 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "Z:\\Group Project\\CarRental\\CarRental\\wwwroot\\images\\logo.png",
-      "PackagePath": "staticwebassets\\images\\logo.png"
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\wwwroot\\images\\Banner1.gif",
+      "PackagePath": "staticwebassets\\images\\Banner1.gif"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\wwwroot\\images\\Banner2.gif",
+      "PackagePath": "staticwebassets\\images\\Banner2.gif"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\wwwroot\\images\\Thumbs.db",
+      "PackagePath": "staticwebassets\\images\\Thumbs.db"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\wwwroot\\images\\logo1.png",
+      "PackagePath": "staticwebassets\\images\\logo1.png"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\wwwroot\\images\\logo2.png",
+      "PackagePath": "staticwebassets\\images\\logo2.png"
     },
     {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\wwwroot\\js\\site.js",
