@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2VXY4WfksdhyL/ujiC4IXcbhkpdnlIjy1H9BmhZuTug=",
+  "Hash": "vHLFyzBIvIAHwj0mav8XIE4ITivalzhmn0mm0NRMhI4=",
   "Source": "CarRental",
   "BasePath": "_content/CarRental",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "Z:\\Group Project\\CarRental\\CarRental\\wwwroot\\images\\logo.png",
+      "SourceId": "CarRental",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\Group Project\\CarRental\\CarRental\\wwwroot\\",
+      "BasePath": "_content/CarRental",
+      "RelativePath": "images/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logo.png"
     },
     {
       "Identity": "Z:\\Group Project\\CarRental\\CarRental\\wwwroot\\js\\site.js",
