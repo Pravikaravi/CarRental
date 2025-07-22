@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\Group Project\\CarRental\\CarRental\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|c:\\users\\admin\\desktop\\group project\\carrental\\carrental\\carrental\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|c:\\users\\admin\\desktop\\group project\\carrental\\carrental\\carrental\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Car.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Group Project\\CarRental\\CarRental\\CarRental\\Models\\Car.cs",
+              "RelativeDocumentMoniker": "CarRental\\Models\\Car.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Group Project\\CarRental\\CarRental\\CarRental\\Models\\Car.cs",
+              "RelativeToolTip": "CarRental\\Models\\Car.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T05:59:14.465Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Group Project\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "CarRental\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Group Project\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "CarRental\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAG8BAAAAAAAAAAAkwJMBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-17T06:28:13.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
