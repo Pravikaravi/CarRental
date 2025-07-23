@@ -6,9 +6,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-
-    <!-- Open Sans Font -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <style>
         body {
@@ -16,18 +16,14 @@
         }
 
         .navbar-brand {
-            font-family: 'Open Sans', sans-serif;
             font-size: 1.4rem;
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-left: 10px;
-            padding-left: 10px;
         }
 
             .navbar-brand img {
                 height: 60px;
-                width: auto;
             }
 
         .navbar {
@@ -41,59 +37,367 @@
         .cart-icon {
             font-size: 1.2rem;
         }
+
+        .blurred {
+            filter: blur(8px);
+            pointer-events: none;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .modal-backdrop.show {
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        @@keyframes floatUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .login-box {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px 35px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(12px);
+            animation: floatUp 0.6s ease-out;
+        }
+
+            .login-box h3 {
+                font-weight: 700;
+                color: #333;
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+        .form-label {
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-control {
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+        }
+
+            .form-control:focus {
+                border-color: #6c63ff;
+                box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.2);
+            }
+
+        .btn-primary {
+            background: linear-gradient(to right, #6c63ff, #48c6ef);
+            border: none;
+            padding: 12px;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+            .btn-primary:hover {
+                transform: scale(1.04);
+                box-shadow: 0 8px 20px rgba(76, 70, 255, 0.25);
+            }
+
+        .eye-toggle {
+            position: absolute;
+            right: 15px;
+            top: 42px;
+            font-size: 18px;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .login-box p {
+            margin-top: 25px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .login-box a {
+            color: #6c63ff;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+            .login-box a:hover {
+                text-decoration: underline;
+            }
+
+        @@keyframes fadeUp {
+            0%
+
+        {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.8s ease-out forwards;
+            opacity: 0; /* Start hidden */
+        }
+
+        /* Delay classes for staggered effect */
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        /* Optional: Hover zoom effect */
+        .car-img-hover {
+            transition: transform 0.4s ease;
+        }
+
+            .car-img-hover:hover {
+                transform: scale(1.05);
+                cursor: pointer;
+            }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-        <div class="container-fluid">
-            <!-- Logo -->
-            <a class="navbar-brand fw-bold" href="/">
-                <img src="@Url.Content("~/images/logo.png")" alt="logo" />
-                CarGo Rental
-            </a>
+    <div id="blurArea">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="/">
+                    <img src='@Url.Content("~/images/logo.png")' alt="logo" />
 
-            <!-- For Small screen -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center">
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="/Menu">Menu</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="/AboutUs">About Us</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="/ContactUs">Contact Us</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link cart-icon" href="/Cart">
-                            🛒
-                        </a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="btn btn-outline-light" href="/Login">Login</a>
-                    </li>
-                </ul>
+                    CarGo Rental
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item mx-3"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item mx-3"><a class="nav-link" href="/Menu">Menu</a></li>
+                        <li class="nav-item mx-3"><a class="nav-link" href="/AboutUs">About Us</a></li>
+                        <li class="nav-item mx-3"><a class="nav-link" href="/ContactUs">Contact Us</a></li>
+                        <li class="nav-item mx-3"><a class="nav-link cart-icon" href="/Cart">🛒</a></li>
+                        <li class="nav-item mx-3">
+                            <a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- MAIN CONTENT -->
-    <div class="container mt-4">
-        @RenderBody()
+        <div class="mt-5 pt-5">
+            @RenderBody()
+        </div>
     </div>
 
-    <!-- BOOTSTRAP JS -->
+    <!-- 🔐 Stylish Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-light shadow-lg rounded-4">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login to Your Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="login-box" data-aos="zoom-in">
+                        <form>
+                            <!-- Email or Username -->
+                            <div class="mb-4 position-relative">
+                                <label class="form-label">Email or Username</label>
+                                <input type="text" class="form-control" placeholder="Enter your email or username" />
+                            </div>
+
+                            <!-- Password -->
+                            <div class="mb-4 position-relative">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" id="popupPassword" placeholder="Enter your password" />
+                                <i class="bi bi-eye-slash eye-toggle" id="togglePopupPassword"></i>
+                            </div>
+
+                            <!-- Login Button -->
+                            <div class="d-grid mb-3">
+                                <button type="button" class="btn btn-primary">Log In</button>
+                            </div>
+
+                            <!-- Register Link -->
+                            <p class="text-center">
+                                Don’t have an account?
+                                <a href="/Account/Register">Register here</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 800, easing: 'ease-in-out' });
+
+        const togglePopup = document.getElementById('togglePopupPassword');
+        const popupPassword = document.getElementById('popupPassword');
+        togglePopup.addEventListener('click', function () {
+            const type = popupPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+            popupPassword.setAttribute('type', type);
+            this.classList.toggle('bi-eye');
+            this.classList.toggle('bi-eye-slash');
+        });
+
+        const loginModal = document.getElementById('loginModal');
+        const blurArea = document.getElementById('blurArea');
+
+        loginModal.addEventListener('show.bs.modal', () => blurArea.classList.add('blurred'));
+        loginModal.addEventListener('hidden.bs.modal', () => blurArea.classList.remove('blurred'));
+    </script>
+
+    <!-- HERO SECTION with Blur + Search Form -->
+    <section class="position-relative text-white mt-2 pt-4">
+        <!-- Full image -->
+        <img src="/images/Banner.png" alt="Banner" class="w-100" style="max-height: 100vh; object-fit: cover;">
+
+        <!-- Overlay with blur behind the form -->
+        <div class="position-absolute top-50 start-50 translate-middle text-center px-4 py-5"
+             data-aos="zoom-in"
+             style="background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); border-radius: 20px; width: 90%; max-width: 700px;">
+
+            <form class="row g-3 align-items-center text-start text-white">
+                <div class="col-md-12 text-center mb-3">
+                    <h3 class="fw-bold mb-2">Find Your Ride</h3>
+                    <p class="text-white-50 mb-0">Search available cars for your next trip</p>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Location</label>
+                    <input type="text" class="form-control" placeholder="Search Places" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Pick-Up Date</label>
+                    <input type="date" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Return Date</label>
+                    <input type="date" class="form-control" />
+                </div>
+                <div class="col-md-12 text-center pt-2">
+                    <button type="submit" class="btn btn-warning px-4">Search Cars</button>
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Why Choose Us?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 bg-white shadow rounded h-100 animate-fade-up">
+                        <i class="bi bi-clock-history display-4 text-primary mb-3"></i>
+                        <h5>Instant Booking</h5>
+                        <p>Book in seconds with our seamless, secure system.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-white shadow rounded h-100 animate-fade-up delay-1">
+                        <i class="bi bi-car-front-fill display-4 text-success mb-3"></i>
+                        <h5>Modern Cars</h5>
+                        <p>Choose from the latest models across all types.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-white shadow rounded h-100 animate-fade-up delay-2">
+                        <i class="bi bi-shield-check display-4 text-danger mb-3"></i>
+                        <h5>Trusted Platform</h5>
+                        <p>Fully secure with admin management and support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <style>
+        .car-img-hover {
+            transition: transform 0.4s ease;
+        }
+
+            .car-img-hover:hover {
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+    </style>
+
+
+
+    <!-- FEATURED CARS -->
+    <section class="py-5" data-aos="zoom-in-up">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Featured Cars</h2>
+            <div class="row g-4">
+                <!-- Car 1 -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="/images/tesla.png" class="card-img-top rounded-top car-img-hover" alt="Tesla">
+                        <div class="card-body">
+                            <h5 class="card-title">Tesla Model 3</h5>
+                            <p class="card-text">Eco-friendly and tech-packed for smart travelers.</p>
+                            <a href="/Account/Login" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car 2 -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="/images/honda.png" class="card-img-top rounded-top car-img-hover" alt="Honda">
+                        <div class="card-body">
+                            <h5 class="card-title">Honda Civic</h5>
+                            <p class="card-text">Perfect for urban travel with comfort and speed.</p>
+                            <a href="/Account/Login" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car 3 -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="/images/suv.png" class="card-img-top rounded-top car-img-hover" alt="SUV">
+                        <div class="card-body">
+                            <h5 class="card-title">Toyota RAV4</h5>
+                            <p class="card-text">Powerful SUV for family trips and adventures.</p>
+                            <a href="/Account/Login" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-white text-center py-5" style="background: linear-gradient(135deg, #007bff, #00c9a7);">
+        <h2 class="mb-3 fw-bold">Join Thousands of Happy Drivers</h2>
+        <p class="mb-4">Book a car that matches your vibe. Anytime. Anywhere.</p>
+        <a href="/Account/Register" class="btn btn-light btn-lg">Register Now</a>
+    </section>
 </body>
 </html>
