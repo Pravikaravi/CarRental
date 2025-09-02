@@ -1,49 +1,432 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CarRental</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/CarRental.styles.css" asp-append-version="true" />
+    <title>@ViewBag.Title - CustomerDashboard</title>
+
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0B1225 0%, #1E293B 50%, #334155 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .Navigation {
+            height: 90px;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0B1225;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .car-rental-heading {
+            font-size: 32px;
+            font-family: 'Gill Sans', Calibri, sans-serif;
+            color: #0fc0fc;
+            margin: 0;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+            .nav a {
+                color: white;
+                text-decoration: none;
+                font-size: 1em;
+                padding: 10px 8px;
+                border-radius: 2px;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+                .nav a:hover {
+                    color: #0fc0fc;
+                    transform: scale(1.05);
+                    text-decoration: underline;
+                    text-decoration-thickness: 2px;
+                    text-underline-offset: 6px;
+                }
+
+            /* Profile */
+            .nav .profile {
+                position: relative;
+                display: inline-block;
+            }
+
+            .nav img {
+                width: 30px;
+                height: 30px;
+                object-fit: cover;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+
+                .nav img:hover {
+                    transform: scale(1.05);
+                }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 45px;
+            right: 0;
+            background-color: #0B1225;
+            border-radius: 10px;
+            box-shadow: 1px 6px 12px rgba(0,0,0,0.3);
+            min-width: 150px;
+            z-index: 1000;
+        }
+
+            .dropdown a {
+                display: block;
+                padding: 10px 15px;
+                color: white;
+                text-decoration: none;
+                transition: background 0.3s ease;
+            }
+
+                .dropdown a:hover {
+                    background-color: #0fc0fc;
+                    color: #0B1225;
+                }
+
+        .profile:hover .dropdown {
+            display: block;
+        }
+
+        /* ====================Search Bar ===============================*/
+        .search-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 70%;
+            hight: 20px;
+            margin: 40px auto;
+        }
+
+        .search-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        select {
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            appearance: none;
+            cursor: pointer;
+        }
+
+            select:focus {
+                outline: none;
+                border-color: #0fc0fc;
+                background: rgba(0, 0, 0, 0.4);
+            }
+
+        button {
+            padding: 14px 0;
+            border-radius: 12px;
+            border: none;
+            background: #0fc0fc;
+            color: whitesmoke;
+            font-size: 1.1rem;
+            font-color: black;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            button:disabled {
+                background: #64748B;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+            button:not(:disabled):hover {
+                background: #0fc0fc;
+                transform: scale(1.05);
+            }
+
+        /* Car Cards */
+        .car-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .car-card {
+            flex: 1 1 300px;
+            max-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.05);
+            transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+            cursor: pointer;
+            padding: 10px;
+            text-align: center;
+        }
+
+            .car-card img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 12px;
+                transition: transform 0.3s;
+            }
+
+            .car-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 13px 30px #0fc0fc;
+            }
+
+                .car-card:hover img {
+                    transform: scale(1.1);
+                }
+
+            .car-card h3 {
+                margin: 10px 0 5px;
+            }
+
+            .car-card p {
+                font-size: 0.8em;
+                color: #ccc;
+            }
+
+        .price-rating {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 0.8em;
+        }
+
+            .price-rating .price {
+                color: #0fc0fc;
+                font-weight: bold;
+            }
+
+            .price-rating .rating i {
+                color: gold;
+            }
+
+        .book-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #0fc0fc;
+            color: #0B1225;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .book-btn:hover {
+                background-color: #0fc0fc;
+                transform: scale(1.05);
+                box-shadow: 0 0 10px #0fc0fc, 0 0 20px #0fc0fc;
+            }
+    </style>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CarRental</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <!-- Navbar -->
+    <div class="Navigation">
+        <div class="logo">
+            <img src="~/Images/logo.png" alt="CAR GO Logo" style="height: 50px; object-fit: contain;">
+            <h1 class="car-rental-heading">CarGo</h1>
+        </div>
+        <div class="nav">
+            <a href="/all-cars">All Cars</a>
+            <a href="/booking-history">Booking History</a>
+            <a href="/support">Support</a>
+            <div class="notifications">
+                <img src="~/Images/1157000.png" alt="Notifications Bell" style="height: 30px;">
+            </div>
+            <div class="profile">
+                <img src="~/Images/profile.png" alt="Profile">
+                <div class="dropdown">
+                    <a href="/profile/edit">Edit Profile</a>
+                    <a href="/account/logout">Logout</a>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - CarRental - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- Search Form -->
+    <div class="search-container">
+        <div class="search-panel">
+            <form id="searchForm" onsubmit="return false;">
+                <select id="brandFilter" required>
+                    <option value="">All Brands</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Subaru">Subaru</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Mahindra">Mahindra</option>
+                </select>
+                <select id="modelFilter" disabled required>
+                    <option value="">Select Model</option>
+                </select>
+                <button type="button" id="searchBtn" disabled>Search</button>
+                @*  <button type="button" id="resetBtn">Reset</button> *@
+            </form>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    </div>
+
+    <!-- Car Cards -->
+    <div class="car-container" id="carContainer">
+        <div class="car-card" data-brand="Honda" data-model="Civic">
+            <img src="~/Images/HondaCivic2.png" alt="Honda Civic">
+            <h3>Honda-Civic</h3>
+            <p>Sedan • 5 Seats • Auto</p>
+            <div class="price-rating">
+                <span class="price">LKR 2600.00/day</span>
+                <div class="rating"><i class="fas fa-star"></i><span>4.5</span></div>
+            </div>
+            <button class="book-btn">Book</button>
+        </div>
+
+        <div class="car-card" data-brand="BMW" data-model="X5">
+            <img src="~/Images/BMW.png" alt="BMW X5">
+            <h3>BMW X5</h3>
+            <p>SUV • 5 Seats • Auto</p>
+            <div class="price-rating">
+                <span class="price">LKR 2400.00/day</span>
+                <div class="rating"><i class="fas fa-star"></i><span>4.6</span></div>
+            </div>
+            <button class="book-btn">Book</button>
+        </div>
+
+        <div class="car-card" data-brand="BMW" data-model="X5">
+            <img src="~/Images/Toyato-Coralla.png" alt="BMW X5">
+            <h3>BMW X5</h3>
+            <p>SUV • 5 Seats • Auto</p>
+            <div class="price-rating">
+                <span class="price">LKR 2400.00/day</span>
+                <div class="rating"><i class="fas fa-star"></i><span>4.6</span></div>
+            </div>
+            <button class="book-btn">Book</button>
+        </div>
+
+        <div class="car-card" data-brand="Toyota" data-model="Corolla">
+            <img src="~/Images/Honda-Accord.png" alt="Honda">
+            <h3>Honda-Accord</h3>
+            <p>Sedan • 5 Seats • Auto</p>
+            <div class="price-rating">
+                <span class="price">LKR 2200.00/day</span>
+                <div class="rating"><i class="fas fa-star"></i><span>4.3</span></div>
+            </div>
+            <button class="book-btn">Book</button>
+        </div>
+    </div>
+
+    <script>
+        const models = {
+            "Honda": ["Civic", "Accord", "CR-V", "HR-V", "Pilot"],
+            "Toyota": ["Corolla", "Camry", "Prius", "RAV4", "Hilux"],
+            "Nissan": ["Altima", "Maxima", "Sentra", "Patrol", "GT-R"],
+            "Subaru": ["Impreza", "Legacy", "Forester", "Outback", "WRX"],
+            "BMW": ["3 Series", "5 Series", "7 Series", "X5", "M3"],
+            "Mahindra": ["Scorpio", "XUV500", "XUV700", "Thar", "Bolero"]
+        };
+
+        const brandFilter = document.getElementById("brandFilter");
+        const modelFilter = document.getElementById("modelFilter");
+        const searchBtn = document.getElementById("searchBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const carContainer = document.getElementById("carContainer");
+
+        brandFilter.addEventListener("change", function () {
+            const brand = this.value;
+            modelFilter.innerHTML = '<option value="">Select Model</option>';
+            modelFilter.disabled = true;
+            searchBtn.disabled = true;
+
+            if (brand && models[brand]) {
+                models[brand].forEach(model => {
+                    let option = document.createElement("option");
+                    option.value = model;
+                    option.textContent = model;
+                    modelFilter.appendChild(option);
+                });
+                modelFilter.disabled = false;
+            }
+            filterCars(brand, "");
+        });
+
+        modelFilter.addEventListener("change", function () {
+            searchBtn.disabled = !this.value;
+        });
+
+        searchBtn.addEventListener("click", function () {
+            const brand = brandFilter.value;
+            const model = modelFilter.value;
+            filterCars(brand, model);
+        });
+
+        resetBtn.addEventListener("click", function () {
+            brandFilter.value = "";
+            modelFilter.innerHTML = '<option value="">Select Model</option>';
+            modelFilter.disabled = true;
+            searchBtn.disabled = true;
+            filterCars("", "");
+        });
+
+        function filterCars(brand, model) {
+            const cars = document.querySelectorAll(".car-card");
+            cars.forEach(car => {
+                const carBrand = car.getAttribute("data-brand");
+                const carModel = car.getAttribute("data-model");
+
+                if ((!brand || carBrand === brand) && (!model || carModel === model)) {
+                    car.style.display = "block";
+                } else {
+                    car.style.display = "none";
+                }
+            });
+        }
+
+        // Show all cars on page load
+        filterCars("", "");
+    </script>
+
+    <div class="content">
+        @RenderBody()
+    </div>
 </body>
 </html>
+
