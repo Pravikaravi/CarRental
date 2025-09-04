@@ -18,6 +18,17 @@ namespace CarRental.Controllers
             return View();
         }
 
+        public IActionResult Aboutus()
+        {
+            return View();
+        }
+
+        public IActionResult Contactus()
+        {
+            return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
