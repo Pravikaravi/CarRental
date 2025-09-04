@@ -2,402 +2,431 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - Car Rental</title>
+    <title>@ViewBag.Title - CustomerDashboard</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .navbar-brand {
-            font-size: 1.4rem;
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0B1225 0%, #1E293B 50%, #334155 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .Navigation {
+            height: 90px;
+            width: 100%;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: space-between;
+            background-color: #0B1225;
         }
 
-            .navbar-brand img {
-                height: 60px;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .car-rental-heading {
+            font-size: 32px;
+            font-family: 'Gill Sans', Calibri, sans-serif;
+            color: #0fc0fc;
+            margin: 0;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+            .nav a {
+                color: white;
+                text-decoration: none;
+                font-size: 1em;
+                padding: 10px 8px;
+                border-radius: 2px;
+                transition: color 0.3s ease, transform 0.3s ease;
             }
 
-        .navbar {
-            height: 100px;
-        }
+                .nav a:hover {
+                    color: #0fc0fc;
+                    transform: scale(1.05);
+                    text-decoration: underline;
+                    text-decoration-thickness: 2px;
+                    text-underline-offset: 6px;
+                }
 
-        .nav-link {
-            font-size: 1rem;
-        }
-
-        .cart-icon {
-            font-size: 1.2rem;
-        }
-
-        .blurred {
-            filter: blur(8px);
-            pointer-events: none;
-            user-select: none;
-            transition: all 0.3s ease;
-        }
-
-        .modal-backdrop.show {
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px);
-        }
-
-        @@keyframes floatUp {
-            from {
-                transform: translateY(40px);
-                opacity: 0;
+            /* Profile */
+            .nav .profile {
+                position: relative;
+                display: inline-block;
             }
 
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .login-box {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 40px 35px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(12px);
-            animation: floatUp 0.6s ease-out;
-        }
-
-            .login-box h3 {
-                font-weight: 700;
-                color: #333;
-                font-size: 28px;
-                margin-bottom: 20px;
+            .nav img {
+                width: 30px;
+                height: 30px;
+                object-fit: cover;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: transform 0.3s ease;
             }
 
-        .form-label {
-            font-weight: 600;
-            color: #444;
-        }
+                .nav img:hover {
+                    transform: scale(1.05);
+                }
 
-        .form-control {
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid #ccc;
-        }
-
-            .form-control:focus {
-                border-color: #6c63ff;
-                box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.2);
-            }
-
-        .btn-primary {
-            background: linear-gradient(to right, #6c63ff, #48c6ef);
-            border: none;
-            padding: 12px;
-            font-weight: 600;
-            border-radius: 12px;
-            transition: 0.3s ease;
-        }
-
-            .btn-primary:hover {
-                transform: scale(1.04);
-                box-shadow: 0 8px 20px rgba(76, 70, 255, 0.25);
-            }
-
-        .eye-toggle {
+        .dropdown {
+            display: none;
             position: absolute;
-            right: 15px;
-            top: 42px;
-            font-size: 18px;
-            color: #999;
+            top: 45px;
+            right: 0;
+            background-color: #0B1225;
+            border-radius: 10px;
+            box-shadow: 1px 6px 12px rgba(0,0,0,0.3);
+            min-width: 150px;
+            z-index: 1000;
+        }
+
+            .dropdown a {
+                display: block;
+                padding: 10px 15px;
+                color: white;
+                text-decoration: none;
+                transition: background 0.3s ease;
+            }
+
+                .dropdown a:hover {
+                    background-color: #0fc0fc;
+                    color: #0B1225;
+                }
+
+        .profile:hover .dropdown {
+            display: block;
+        }
+
+        /* ====================Search Bar ===============================*/
+        .search-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 70%;
+            hight: 20px;
+            margin: 40px auto;
+        }
+
+        .search-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        select {
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            appearance: none;
             cursor: pointer;
         }
 
-        .login-box p {
-            margin-top: 25px;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .login-box a {
-            color: #6c63ff;
-            font-weight: 500;
-            text-decoration: none;
-        }
-
-            .login-box a:hover {
-                text-decoration: underline;
+            select:focus {
+                outline: none;
+                border-color: #0fc0fc;
+                background: rgba(0, 0, 0, 0.4);
             }
 
-        @@keyframes fadeUp {
-            0%
-
-        {
-            opacity: 0;
-            transform: translateY(40px);
+        button {
+            padding: 14px 0;
+            border-radius: 12px;
+            border: none;
+            background: #0fc0fc;
+            color: whitesmoke;
+            font-size: 1.1rem;
+            font-color: black;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
+            button:disabled {
+                background: #64748B;
+                cursor: not-allowed;
+                transform: none;
+            }
 
-        }
-
-        .animate-fade-up {
-            animation: fadeUp 0.8s ease-out forwards;
-            opacity: 0; /* Start hidden */
-        }
-
-        /* Delay classes for staggered effect */
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        /* Optional: Hover zoom effect */
-        .car-img-hover {
-            transition: transform 0.4s ease;
-        }
-
-            .car-img-hover:hover {
+            button:not(:disabled):hover {
+                background: #0fc0fc;
                 transform: scale(1.05);
-                cursor: pointer;
+            }
+
+        /* Car Cards */
+        .car-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .car-card {
+            flex: 1 1 300px;
+            max-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.05);
+            transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+            cursor: pointer;
+            padding: 10px;
+            text-align: center;
+        }
+
+            .car-card img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 12px;
+                transition: transform 0.3s;
+            }
+
+            .car-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 13px 30px #0fc0fc;
+            }
+
+                .car-card:hover img {
+                    transform: scale(1.1);
+                }
+
+            .car-card h3 {
+                margin: 10px 0 5px;
+            }
+
+            .car-card p {
+                font-size: 0.8em;
+                color: #ccc;
+            }
+
+        .price-rating {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 0.8em;
+        }
+
+            .price-rating .price {
+                color: #0fc0fc;
+                font-weight: bold;
+            }
+
+            .price-rating .rating i {
+                color: gold;
+            }
+
+        .book-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #0fc0fc;
+            color: #0B1225;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .book-btn:hover {
+                background-color: #0fc0fc;
+                transform: scale(1.05);
+                box-shadow: 0 0 10px #0fc0fc, 0 0 20px #0fc0fc;
             }
     </style>
 </head>
+
 <body>
-    <div id="blurArea">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand fw-bold" href="/">
-                    <img src='@Url.Content("~/images/logo.png")' alt="logo" />
+    <!-- Navbar -->
+    <div class="Navigation">
+        <div class="logo">
+            <img src="~/Images/logo.png" alt="CAR GO Logo" style="height: 50px; object-fit: contain;">
+            <h1 class="car-rental-heading">CarGo</h1>
+        </div>
+        <div class="nav">
+            <a href="/menu">Menu</a>
+            <a class="nav-link" asp-controller="Home" asp-action="Contactus">Contact Us</a>
+            <a class="nav-link" asp-controller="Home" asp-action="Aboutus">About Us</a>
 
-                    CarGo Rental
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav align-items-center">
-                        <li class="nav-item mx-3"><a class="nav-link" href="/">Home</a></li>
-                        <li class="nav-item mx-3"><a class="nav-link" href="/Menu">Menu</a></li>
-                        <li class="nav-item mx-3"><a class="nav-link" href="/AboutUs">About Us</a></li>
-                        <li class="nav-item mx-3"><a class="nav-link" href="/ContactUs">Contact Us</a></li>
-                        <li class="nav-item mx-3"><a class="nav-link cart-icon" href="/Cart">🛒</a></li>
-                        <li class="nav-item mx-3">
-                            <a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-                        </li>
-                    </ul>
-                </div>
+
+
+
+            <div class="notifications">
+                <img src="~/Images/1157000.png" alt="Notifications Bell" style="height: 30px;">
             </div>
-        </nav>
+            <div class="profile">
+                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+            </div>
 
-        <div class="mt-5 pt-5">
-            @RenderBody()
         </div>
     </div>
 
-    <!-- 🔐 Stylish Login Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-light shadow-lg rounded-4">
-                <div class="modal-header">
-                    <h5 class="modal-title">Login to Your Account</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="login-box" data-aos="zoom-in">
-                        <form>
-                            <!-- Email or Username -->
-                            <div class="mb-4 position-relative">
-                                <label class="form-label">Email or Username</label>
-                                <input type="text" class="form-control" placeholder="Enter your email or username" />
-                            </div>
-
-                            <!-- Password -->
-                            <div class="mb-4 position-relative">
-                                <label class="form-label">Password</label>
-                                <input type="password" class="form-control" id="popupPassword" placeholder="Enter your password" />
-                                <i class="bi bi-eye-slash eye-toggle" id="togglePopupPassword"></i>
-                            </div>
-
-                            <!-- Login Button -->
-                            <div class="d-grid mb-3">
-                                <button type="button" class="btn btn-primary">Log In</button>
-                            </div>
-
-                            <!-- Register Link -->
-                            <p class="text-center">
-                                Don’t have an account?
-                                <a href="/Account/Register">Register here</a>
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    <!-- Search Form -->
+    <div class="search-container">
+        <div class="search-panel">
+            <form id="searchForm" onsubmit="return false;">
+                <select id="brandFilter" required>
+                    <option value="">All Brands</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Subaru">Subaru</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Mahindra">Mahindra</option>
+                </select>
+                <select id="modelFilter" disabled required>
+                    <option value="">Select Model</option>
+                </select>
+                <button type="button" id="searchBtn" disabled>Search</button>
+                @*  <button type="button" id="resetBtn">Reset</button> *@
+            </form>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Car Cards -->
+    <div class="car-container" id="carContainer">
+        <div class="car-card" data-brand="Honda" data-model="Civic">
+            <img src="~/Images/HondaCivic2.png" alt="Honda Civic">
+            <h3>Honda-Civic</h3>
+            <p>Sedan • 5 Seats • Auto</p>
+            <div class="price-rating">
+                <span class="price">LKR 2600.00/day</span>
+                <div class="rating"><i class="fas fa-star"></i><span>4.5</span></div>
+            </div>
+            <button class="book-btn">Book</button>
+        </div>
+
+        <div class="car-card" data-brand="BMW" data-model="X5">
+            <img src="~/Images/BMW.png" alt="BMW X5">
+            <h3>BMW X5</h3>
+            <p>SUV • 5 Seats • Auto</p>
+            <div class="price-rating">
+                <span class="price">LKR 2400.00/day</span>
+                <div class="rating"><i class="fas fa-star"></i><span>4.6</span></div>
+            </div>
+            <button class="book-btn">Book</button>
+        </div>
+
+        <div class="car-card" data-brand="BMW" data-model="X5">
+            <img src="~/Images/Toyato-Coralla.png" alt="BMW X5">
+            <h3>BMW X5</h3>
+            <p>SUV • 5 Seats • Auto</p>
+            <div class="price-rating">
+                <span class="price">LKR 2400.00/day</span>
+                <div class="rating"><i class="fas fa-star"></i><span>4.6</span></div>
+            </div>
+            <button class="book-btn">Book</button>
+        </div>
+
+        <div class="car-card" data-brand="Toyota" data-model="Corolla">
+            <img src="~/Images/Honda-Accord.png" alt="Honda">
+            <h3>Honda-Accord</h3>
+            <p>Sedan • 5 Seats • Auto</p>
+            <div class="price-rating">
+                <span class="price">LKR 2200.00/day</span>
+                <div class="rating"><i class="fas fa-star"></i><span>4.3</span></div>
+            </div>
+            <button class="book-btn">Book</button>
+        </div>
+    </div>
+
     <script>
-        AOS.init({ once: true, duration: 800, easing: 'ease-in-out' });
+        const models = {
+            "Honda": ["Civic", "Accord", "CR-V", "HR-V", "Pilot"],
+            "Toyota": ["Corolla", "Camry", "Prius", "RAV4", "Hilux"],
+            "Nissan": ["Altima", "Maxima", "Sentra", "Patrol", "GT-R"],
+            "Subaru": ["Impreza", "Legacy", "Forester", "Outback", "WRX"],
+            "BMW": ["3 Series", "5 Series", "7 Series", "X5", "M3"],
+            "Mahindra": ["Scorpio", "XUV500", "XUV700", "Thar", "Bolero"]
+        };
 
-        const togglePopup = document.getElementById('togglePopupPassword');
-        const popupPassword = document.getElementById('popupPassword');
-        togglePopup.addEventListener('click', function () {
-            const type = popupPassword.getAttribute('type') === 'password' ? 'text' : 'password';
-            popupPassword.setAttribute('type', type);
-            this.classList.toggle('bi-eye');
-            this.classList.toggle('bi-eye-slash');
+        const brandFilter = document.getElementById("brandFilter");
+        const modelFilter = document.getElementById("modelFilter");
+        const searchBtn = document.getElementById("searchBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const carContainer = document.getElementById("carContainer");
+
+        brandFilter.addEventListener("change", function () {
+            const brand = this.value;
+            modelFilter.innerHTML = '<option value="">Select Model</option>';
+            modelFilter.disabled = true;
+            searchBtn.disabled = true;
+
+            if (brand && models[brand]) {
+                models[brand].forEach(model => {
+                    let option = document.createElement("option");
+                    option.value = model;
+                    option.textContent = model;
+                    modelFilter.appendChild(option);
+                });
+                modelFilter.disabled = false;
+            }
+            filterCars(brand, "");
         });
 
-        const loginModal = document.getElementById('loginModal');
-        const blurArea = document.getElementById('blurArea');
+        modelFilter.addEventListener("change", function () {
+            searchBtn.disabled = !this.value;
+        });
 
-        loginModal.addEventListener('show.bs.modal', () => blurArea.classList.add('blurred'));
-        loginModal.addEventListener('hidden.bs.modal', () => blurArea.classList.remove('blurred'));
-    </script>
+        searchBtn.addEventListener("click", function () {
+            const brand = brandFilter.value;
+            const model = modelFilter.value;
+            filterCars(brand, model);
+        });
 
-    <!-- HERO SECTION with Blur + Search Form -->
-    <section class="position-relative text-white mt-2 pt-4">
-        <!-- Full image -->
-        <img src="/images/Banner.png" alt="Banner" class="w-100" style="max-height: 100vh; object-fit: cover;">
+        resetBtn.addEventListener("click", function () {
+            brandFilter.value = "";
+            modelFilter.innerHTML = '<option value="">Select Model</option>';
+            modelFilter.disabled = true;
+            searchBtn.disabled = true;
+            filterCars("", "");
+        });
 
-        <!-- Overlay with blur behind the form -->
-        <div class="position-absolute top-50 start-50 translate-middle text-center px-4 py-5"
-             data-aos="zoom-in"
-             style="background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); border-radius: 20px; width: 90%; max-width: 700px;">
+        function filterCars(brand, model) {
+            const cars = document.querySelectorAll(".car-card");
+            cars.forEach(car => {
+                const carBrand = car.getAttribute("data-brand");
+                const carModel = car.getAttribute("data-model");
 
-            <form class="row g-3 align-items-center text-start text-white">
-                <div class="col-md-12 text-center mb-3">
-                    <h3 class="fw-bold mb-2">Find Your Ride</h3>
-                    <p class="text-white-50 mb-0">Search available cars for your next trip</p>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Location</label>
-                    <input type="text" class="form-control" placeholder="Search Places" />
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Pick-Up Date</label>
-                    <input type="date" class="form-control" />
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Return Date</label>
-                    <input type="date" class="form-control" />
-                </div>
-                <div class="col-md-12 text-center pt-2">
-                    <button type="submit" class="btn btn-warning px-4">Search Cars</button>
-                </div>
-            </form>
-
-        </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="py-5 bg-light">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-4">Why Choose Us?</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="p-4 bg-white shadow rounded h-100 animate-fade-up">
-                        <i class="bi bi-clock-history display-4 text-primary mb-3"></i>
-                        <h5>Instant Booking</h5>
-                        <p>Book in seconds with our seamless, secure system.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 bg-white shadow rounded h-100 animate-fade-up delay-1">
-                        <i class="bi bi-car-front-fill display-4 text-success mb-3"></i>
-                        <h5>Modern Cars</h5>
-                        <p>Choose from the latest models across all types.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 bg-white shadow rounded h-100 animate-fade-up delay-2">
-                        <i class="bi bi-shield-check display-4 text-danger mb-3"></i>
-                        <h5>Trusted Platform</h5>
-                        <p>Fully secure with admin management and support.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <style>
-        .car-img-hover {
-            transition: transform 0.4s ease;
+                if ((!brand || carBrand === brand) && (!model || carModel === model)) {
+                    car.style.display = "block";
+                } else {
+                    car.style.display = "none";
+                }
+            });
         }
 
-            .car-img-hover:hover {
-                transform: scale(1.05);
-                cursor: pointer;
-            }
-    </style>
+        // Show all cars on page load
+        filterCars("", "");
+    </script>
 
-
-
-    <!-- FEATURED CARS -->
-    <section class="py-5" data-aos="zoom-in-up">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-4">Featured Cars</h2>
-            <div class="row g-4">
-                <!-- Car 1 -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <img src="/images/tesla.png" class="card-img-top rounded-top car-img-hover" alt="Tesla">
-                        <div class="card-body">
-                            <h5 class="card-title">Tesla Model 3</h5>
-                            <p class="card-text">Eco-friendly and tech-packed for smart travelers.</p>
-                            <a href="/Account/Login" class="btn btn-primary">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Car 2 -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <img src="/images/honda.png" class="card-img-top rounded-top car-img-hover" alt="Honda">
-                        <div class="card-body">
-                            <h5 class="card-title">Honda Civic</h5>
-                            <p class="card-text">Perfect for urban travel with comfort and speed.</p>
-                            <a href="/Account/Login" class="btn btn-primary">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Car 3 -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <img src="/images/suv.png" class="card-img-top rounded-top car-img-hover" alt="SUV">
-                        <div class="card-body">
-                            <h5 class="card-title">Toyota RAV4</h5>
-                            <p class="card-text">Powerful SUV for family trips and adventures.</p>
-                            <a href="/Account/Login" class="btn btn-primary">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="text-white text-center py-5" style="background: linear-gradient(135deg, #007bff, #00c9a7);">
-        <h2 class="mb-3 fw-bold">Join Thousands of Happy Drivers</h2>
-        <p class="mb-4">Book a car that matches your vibe. Anytime. Anywhere.</p>
-        <a href="/Account/Register" class="btn btn-light btn-lg">Register Now</a>
-    </section>
+    <div class="content">
+        @RenderBody()
+    </div>
 </body>
 </html>

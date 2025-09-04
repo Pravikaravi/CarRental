@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+    Layout = null; // standalone page
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Car Rental</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0B1225 0%, #1E293B 50%, #334155 100%);
+            color: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .contact-section {
+            padding: 60px 20px;
+        }
+
+        .contact-title {
+            color: #0fc0fc;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .form-control, .form-select {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+
+            .form-control:focus {
+                border-color: #0fc0fc;
+                box-shadow: 0 0 8px rgba(15,192,252,0.5);
+            }
+
+        .btn-custom {
+            background-color: #0fc0fc;
+            color: #0B1225;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+            .btn-custom:hover {
+                background-color: #0fc0fc;
+                transform: scale(1.05);
+                box-shadow: 0 0 12px #0fc0fc;
+            }
+
+        .contact-info h5 {
+            color: #0fc0fc;
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container contact-section">
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-md-7 mb-4">
+                <h2 class="contact-title">Get in Touch</h2>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="Enter your name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="Enter your email" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-control" placeholder="Enter subject" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" rows="5" placeholder="Write your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-custom px-4">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="col-md-5 contact-info">
+                <h2 class="contact-title">Contact Information</h2>
+                <h5><i class="bi bi-telephone-fill"></i> Phone</h5>
+                <p>+94 77 123 4567</p>
+
+                <h5><i class="bi bi-envelope-fill"></i> Email</h5>
+                <p>opizzashop@gmail.com</p>
+
+                <h5><i class="bi bi-geo-alt-fill"></i> Location</h5>
+                <p>University of Jaffna, Sri Lanka</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
