@@ -354,7 +354,6 @@ Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\CarRental.pdb
 Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\appsettings.Development.json
 Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\appsettings.json
 Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\CarRental.staticwebassets.runtime.json
-Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\CarRental.staticwebassets.endpoints.json
 Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\CarRental.exe
 Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\CarRental.deps.json
 Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\CarRental.runtimeconfig.json
@@ -501,14 +500,16 @@ Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\scopedcss\bundle
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\scopedcss\projectbundle\CarRental.bundle.scp.css
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\staticwebassets.build.json
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\staticwebassets.development.json
-Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.CarRental.Microsoft.AspNetCore.StaticWebAssets.props
-Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.CarRental.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.build.CarRental.props
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.CarRental.props
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.CarRental.props
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\staticwebassets.pack.json
-Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\CarRental.csproj.Up2Date
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\CarRental.genruntimeconfig.cache
 Z:\Group Project\CarRental\CarRental\CarRental\obj\Debug\net8.0\ref\CarRental.dll
+Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\MailKit.dll
+Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\MimeKit.dll
+Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+Z:\Group Project\CarRental\CarRental\CarRental\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Verify OTP";
+}
+
+<h2>Verify OTP</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label>Enter OTP</label>
+        <input type="text" name="otpInput" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Verify</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}

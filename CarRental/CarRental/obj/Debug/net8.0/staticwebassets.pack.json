@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CarRental.bundle.scp.css",
-      "PackagePath": "staticwebassets\\CarRental.btmrldtxsd.bundle.scp.css"
+      "PackagePath": "staticwebassets\\CarRental.bundle.scp.css"
     },
     {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\css\\site.css",
@@ -11,6 +11,26 @@
     {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\1157000.png",
+      "PackagePath": "staticwebassets\\images\\1157000.png"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\5IQEnQ2.jpg",
+      "PackagePath": "staticwebassets\\images\\5IQEnQ2.jpg"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\9187534.png",
+      "PackagePath": "staticwebassets\\images\\9187534.png"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\BMW.png",
+      "PackagePath": "staticwebassets\\images\\BMW.png"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\BMWBlack.png",
+      "PackagePath": "staticwebassets\\images\\BMWBlack.png"
     },
     {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\Banner.png",
@@ -25,8 +45,40 @@
       "PackagePath": "staticwebassets\\images\\Banner2.gif"
     },
     {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\Honda-Accord.png",
+      "PackagePath": "staticwebassets\\images\\Honda-Accord.png"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\HondaCivic2.png",
+      "PackagePath": "staticwebassets\\images\\HondaCivic2.png"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\Profile.png",
+      "PackagePath": "staticwebassets\\images\\Profile.png"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\RRR.jpg",
+      "PackagePath": "staticwebassets\\images\\RRR.jpg"
+    },
+    {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\Thumbs.db",
       "PackagePath": "staticwebassets\\images\\Thumbs.db"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\Toyato Coralla.webp",
+      "PackagePath": "staticwebassets\\images\\Toyato Coralla.webp"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\Toyato-Coralla.png",
+      "PackagePath": "staticwebassets\\images\\Toyato-Coralla.png"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\Toyato.png",
+      "PackagePath": "staticwebassets\\images\\Toyato.png"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\driver.png",
+      "PackagePath": "staticwebassets\\images\\driver.png"
     },
     {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\honda.png",
@@ -283,10 +335,6 @@
     {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
-    },
-    {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CarRental.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
-      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CarRental.Microsoft.AspNetCore.StaticWebAssets.props",
