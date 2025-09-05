@@ -78,8 +78,7 @@
               "RelativeToolTip": "CarRental\\Views\\Admin\\AdminDashboard.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-05T09:02:27.528Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-05T09:02:27.528Z"
             },
             {
               "$type": "Document",
@@ -91,8 +90,7 @@
               "RelativeToolTip": "CarRental\\Controllers\\AdminController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-05T09:01:55.47Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-05T09:01:55.47Z"
             },
             {
               "$type": "Document",
@@ -104,8 +102,7 @@
               "RelativeToolTip": "CarRental\\Views\\Home\\Aboutus.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-05T09:00:38.62Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-05T09:00:38.62Z"
             },
             {
               "$type": "Document",
@@ -117,8 +114,7 @@
               "RelativeToolTip": "CarRental\\Views\\Home\\Privacy.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-05T08:56:50.623Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-05T08:56:50.623Z"
             },
             {
               "$type": "Document",
@@ -130,8 +126,7 @@
               "RelativeToolTip": "CarRental\\Views\\Customer\\CustomerDashboard.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-05T08:56:24.777Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-05T08:56:24.777Z"
             },
             {
               "$type": "Document",
@@ -143,8 +138,7 @@
               "RelativeToolTip": "CarRental\\Controllers\\CustomerController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-05T08:55:43.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-05T08:55:43.361Z"
             },
             {
               "$type": "Document",
@@ -154,7 +148,7 @@
               "RelativeDocumentMoniker": "CarRental\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "CarRental\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAF8BAAAAAAAAAAAUwHABAABaAAAA",
+              "ViewState": "AQIAAIwBAAAAAAAAAAAUwHABAABaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-05T08:08:45.629Z",
               "EditorCaption": ""
@@ -169,8 +163,7 @@
               "RelativeToolTip": "CarRental\\Services\\EmailService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-05T05:40:03.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-05T05:40:03.44Z"
             },
             {
               "$type": "Document",
