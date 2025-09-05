@@ -91,6 +91,7 @@
         }
 
         <form asp-controller="Account" asp-action="Signup" method="post">
+<<<<<<< HEAD
             @if (ViewBag.ShowOtpForm == true)
             {
                 <div class="mb-3 text-start">
@@ -115,6 +116,21 @@
                 </div>
                 <button type="submit" class="btn-signup">Send OTP</button>
             }
+=======
+            <div class="mb-3 text-start">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email" id="email" required />
+            </div>
+            <div class="mb-3 text-start">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" required />
+            </div>
+            <div class="mb-3 text-start">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" required />
+            </div>
+            <button type="submit" class="btn-signup">Create Account</button>
+>>>>>>> origin/main
         </form>
 
         <p class="mt-3">
