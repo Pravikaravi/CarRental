@@ -258,6 +258,79 @@
                 transform: scale(1.05);
                 box-shadow: 0 0 10px #0fc0fc, 0 0 20px #0fc0fc;
             }
+
+        .profile {
+            position: relative;
+            display: inline-block;
+            margin-left: 15px;
+        }
+
+            .profile img {
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .profile .dropdown {
+                display: none;
+                position: absolute;
+                background: #0B1225;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+                border-radius: 6px;
+                right: 0;
+                top: 45px;
+                min-width: 160px;
+                z-index: 1000;
+            }
+
+            .profile:hover .dropdown {
+                display: block;
+            }
+
+            .profile .dropdown a {
+                display: block;
+                padding: 10px 15px;
+                text-decoration: none;
+                color: white;
+            }
+
+                .profile .dropdown a:hover {
+                    background: #f1f1f1;
+                }
+
+            .profile span {
+                font-size: 1rem;
+                vertical-align: middle;
+            }
+
+        .avatar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+            .avatar:hover {
+                transform: scale(1.05);
+            }
+
+        .username {
+            margin-top: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #0fc0fc;
+        }
+ 
+
+
     </style>
 </head>
 
@@ -268,23 +341,59 @@
             <img src="~/Images/logo.png" alt="CAR GO Logo" style="height: 50px; object-fit: contain;">
             <h1 class="car-rental-heading">CarGo</h1>
         </div>
+
         <div class="nav">
             <a href="/menu">Menu</a>
             <a class="nav-link" asp-controller="Home" asp-action="Contactus">Contact Us</a>
             <a class="nav-link" asp-controller="Home" asp-action="Aboutus">About Us</a>
 
-
-
-
             <div class="notifications">
                 <img src="~/Images/1157000.png" alt="Notifications Bell" style="height: 30px;">
             </div>
+
+            <!-- ✅ Profile Section -->
             <div class="profile">
-                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                @if (Context.Session.GetString("UserName") != null)
+                {
+                    var email = Context.Session.GetString("UserName");
+                    var role = Context.Session.GetString("Role");
+                    var username = email.Contains("@") ? email.Split('@')[0] : email;
+
+                    if (role == "Admin")
+                    {
+                        <div class="avatar-container">
+                            <img src="~/Images/admin.png" alt="Admin Avatar" class="avatar" />
+                            <span class="username">@username</span>
+                            <div class="dropdown">
+                                <a asp-controller="Admin" asp-action="AdminDashboard">Admin Dashboard</a>
+                                <a asp-controller="Account" asp-action="Logout">Logout</a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="avatar-container">
+                            <img src="~/Images/user.png" alt="User Avatar" class="avatar" />
+                            <span class="username">@username</span>
+                            <div class="dropdown">
+                                <a asp-controller="Customer" asp-action="CustomerDashboard">User Dashboard</a>
+                                <a asp-controller="Account" asp-action="Logout">Logout</a>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                }
             </div>
+
 
         </div>
     </div>
+
+
+
 
     <!-- Search Form -->
     <div class="search-container">

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kzF2Qu14U98rpbstm7XAEzZ0KtoaDMxkAVtyjQASyEc=",
+  "Hash": "lF7+GAYnamt1twB7ikwvQVvSeXQqoMR6lSxcXDN7j1c=",
   "Source": "CarRental",
   "BasePath": "_content/CarRental",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\9187534.png"
+    },
+    {
+      "Identity": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\admin.png",
+      "SourceId": "CarRental",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\",
+      "BasePath": "_content/CarRental",
+      "RelativePath": "images/admin.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\admin.png"
     },
     {
       "Identity": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\Banner.png",
@@ -528,6 +547,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Toyato-Coralla.png"
+    },
+    {
+      "Identity": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\user.png",
+      "SourceId": "CarRental",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\",
+      "BasePath": "_content/CarRental",
+      "RelativePath": "images/user.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\user.png"
     },
     {
       "Identity": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\js\\site.js",

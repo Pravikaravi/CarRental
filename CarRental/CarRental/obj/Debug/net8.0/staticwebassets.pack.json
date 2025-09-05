@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets\\images\\Toyato.png"
     },
     {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\admin.png",
+      "PackagePath": "staticwebassets\\images\\admin.png"
+    },
+    {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\driver.png",
       "PackagePath": "staticwebassets\\images\\driver.png"
     },
@@ -103,6 +107,10 @@
     {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\tesla.png",
       "PackagePath": "staticwebassets\\images\\tesla.png"
+    },
+    {
+      "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\images\\user.png",
+      "PackagePath": "staticwebassets\\images\\user.png"
     },
     {
       "Id": "Z:\\Group Project\\CarRental\\CarRental\\CarRental\\wwwroot\\js\\site.js",
