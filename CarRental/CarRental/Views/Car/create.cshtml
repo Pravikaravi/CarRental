@@ -1,0 +1,39 @@
+﻿@model CarRental.Models.Car
+@{
+    ViewBag.Title = "Add New Car";
+}
+
+<h2>Add New Car</h2>
+
+<form asp-action="Create" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label asp-for="CarName"></label>
+        <input asp-for="CarName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CarBrand"></label>
+        <input asp-for="CarBrand" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CarColor"></label>
+        <input asp-for="CarColor" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CarNumber"></label>
+        <input asp-for="CarNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CarSeats"></label>
+        <input asp-for="CarSeats" type="number" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageUrl">Upload Image</label>
+        <input type="file" name="CarImage" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IsAvailable"></label>
+        <input asp-for="IsAvailable" type="checkbox" />
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>

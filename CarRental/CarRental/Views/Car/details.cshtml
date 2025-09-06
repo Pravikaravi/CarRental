@@ -1,0 +1,16 @@
+﻿@model CarRental.Models.Car
+
+@{
+    ViewBag.Title = "Car Details";
+}
+
+<h2>Car Details</h2>
+<p><strong>Name:</strong> @Model.CarName</p>
+<p><strong>Brand:</strong> @Model.CarBrand</p>
+<p><strong>Color:</strong> @Model.CarColor</p>
+<p><strong>Seats:</strong> @Model.CarSeats</p>
+<p><strong>Number:</strong> @Model.CarNumber</p>
+<p><strong>Available:</strong> @(Model.IsAvailable ? "Yes" : "No")</p>
+<img src="@Model.ImageUrl" style="height:150px;width:250px;object-fit:cover;" />
+
+<p>@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })</p>

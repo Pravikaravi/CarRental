@@ -1,0 +1,153 @@
+﻿@model CarRental.Models.Car
+@{
+    ViewBag.Title = "Edit Car";
+    Layout = null;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0B1225, #1E293B, #334155);
+        font-family: 'Segoe UI', sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    h2 {
+        color: #0fc0fc;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid #0fc0fc;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 0 20px rgba(15, 192, 252, 0.2);
+    }
+
+    .form-label {
+        font-weight: bold;
+        color: #0fc0fc;
+    }
+
+    .form-control, .form-select {
+        background-color: #0B1225;
+        color: #fff;
+        border: 1px solid #444;
+        border-radius: 8px;
+        padding: 10px;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #0fc0fc;
+            box-shadow: 0 0 8px #0fc0fc;
+        }
+
+    img {
+        margin-top: 10px;
+        border: 2px solid #0fc0fc;
+        box-shadow: 0 0 10px rgba(15, 192, 252, 0.3);
+    }
+
+    .btn-warning {
+        background-color: #facc15;
+        color: #0B1225;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 10px 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .btn-warning:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #facc15;
+        }
+
+    .btn-secondary {
+        background-color: #64748b;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 10px 20px;
+        margin-left: 10px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #64748b;
+        }
+</style>
+
+<div class="container">
+    <h2><i class="fa fa-edit"></i> Edit Car</h2>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data" class="card">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label class="form-label">Car Name</label>
+            <input asp-for="CarName" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Brand</label>
+            <input asp-for="CarBrand" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Color</label>
+            <input asp-for="CarColor" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Car Number</label>
+            <input asp-for="CarNumber" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Seats</label>
+            <input asp-for="CarSeats" type="number" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Current Image</label><br />
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" alt="Car Image" style="width:120px; height:80px; object-fit:cover; border-radius:5px;" />
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Upload New Image (optional)</label>
+            <input type="file" name="CarImage" class="form-control" accept="image/png,image/jpeg,image/jpg,image/gif" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Available</label>
+            <select asp-for="IsAvailable" class="form-select">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-warning">
+                <i class="fa fa-save"></i> Update Car
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fa fa-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </form>
+</div>
