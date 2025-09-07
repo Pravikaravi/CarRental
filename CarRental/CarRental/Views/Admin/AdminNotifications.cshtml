@@ -1,5 +1,222 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewBag.Title = "Admin Notifications";
+    Layout = null;
 }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - CarGo</title>
+
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0B1225 0%, #1E293B 50%, #334155 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .Navigation {
+            height: 90px;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0B1225;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .car-rental-heading {
+            font-size: 28px;
+            font-family: 'Gill Sans', Calibri, sans-serif;
+            color: #0fc0fc;
+            margin: 0;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+            .nav a {
+                color: white;
+                text-decoration: none;
+                font-size: 1em;
+                padding: 10px 8px;
+                border-radius: 2px;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+                .nav a:hover {
+                    color: #0fc0fc;
+                    transform: scale(1.05);
+                    text-decoration: underline;
+                    text-decoration-thickness: 2px;
+                    text-underline-offset: 6px;
+                }
+
+        .back-btn {
+            color: #0fc0fc;
+            font-size: 1.5rem;
+            text-decoration: none;
+            margin-right: 15px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+            .back-btn:hover {
+                color: #ffffff;
+                transform: scale(1.2);
+            }
+
+        /* Notification Section */
+        .notification-container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: #1E293B;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+            .notification-container h2 {
+                text-align: center;
+                color: #0fc0fc;
+                margin-bottom: 25px;
+            }
+
+        .notification {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background-color: #334155;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+            .notification i {
+                font-size: 1.5rem;
+                color: #0fc0fc;
+            }
+
+        .notification-content {
+            flex: 1;
+        }
+
+            .notification-content p {
+                margin: 0 0 8px;
+            }
+
+        .notification-time {
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+
+        .notification-actions {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+            .notification-actions button {
+                background: none;
+                border: none;
+                color: #0fc0fc;
+                cursor: pointer;
+                font-size: 0.9rem;
+                transition: color 0.3s ease;
+            }
+
+                .notification-actions button:hover {
+                    color: #ffffff;
+                }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="Navigation">
+        <div class="logo">
+            <a href="javascript:history.back()" class="back-btn">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+            <img src="~/Images/logo.png" alt="CarGo Logo" style="height: 50px; object-fit: contain;">
+            <h1 class="car-rental-heading">Admin Notifications</h1>
+        </div>
+        <div class="nav">
+            <a href="@Url.Action("AdminDashboard", "Admin")">Dashboard</a>
+            <a href="@Url.Action("AdminProfile", "Admin")">Profile</a>
+            <a href="@Url.Action("AdminNotifications", "Admin")">Notifications</a>
+            <a href="@Url.Action("StaffManagement", "Admin")">Staff</a>
+            <a href="@Url.Action("BookingManagement", "Admin")">Bookings</a>
+            <a href="@Url.Action("CarManagement", "Admin")">Cars</a>
+            <a href="@Url.Action("NewBooking", "Admin")">New Booking</a>
+        </div>
+    </div>
+
+    <!-- Notifications Content -->
+    <div class="notification-container">
+        <h2>Recent Notifications</h2>
+
+        <!-- Notification 1 -->
+        <div class="notification">
+            <i class="fa fa-car"></i>
+            <div class="notification-content">
+                <p><strong>New Booking:</strong> A new booking has been made by John Doe.</p>
+                <span class="notification-time">5 minutes ago</span>
+            </div>
+            <div class="notification-actions">
+                <button><i class="fa fa-check"></i> Mark as Read</button>
+                <button><i class="fa fa-trash"></i> Delete</button>
+            </div>
+        </div>
+
+        <!-- Notification 2 -->
+        <div class="notification">
+            <i class="fa fa-users"></i>
+            <div class="notification-content">
+                <p><strong>Staff Update:</strong> New staff member Sarah has been added.</p>
+                <span class="notification-time">30 minutes ago</span>
+            </div>
+            <div class="notification-actions">
+                <button><i class="fa fa-check"></i> Mark as Read</button>
+                <button><i class="fa fa-trash"></i> Delete</button>
+            </div>
+        </div>
+
+        <!-- Notification 3 -->
+        <div class="notification">
+            <i class="fa fa-exclamation-circle"></i>
+            <div class="notification-content">
+                <p><strong>System Alert:</strong> Scheduled maintenance tonight at 11:00 PM.</p>
+                <span class="notification-time">2 hours ago</span>
+            </div>
+            <div class="notification-actions">
+                <button><i class="fa fa-check"></i> Mark as Read</button>
+                <button><i class="fa fa-trash"></i> Delete</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+s

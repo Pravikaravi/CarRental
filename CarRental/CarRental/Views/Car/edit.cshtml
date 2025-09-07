@@ -124,7 +124,7 @@
             <label class="form-label">Current Image</label><br />
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
             {
-                <img src="@Model.ImageUrl" alt="Car Image" style="width:120px; height:80px; object-fit:cover; border-radius:5px;" />
+                <img src="@Model.ImageUrl" alt="Car Image" style="width:300px; height:200px; object-fit:cover; border-radius:10px;" />
             }
         </div>
 
@@ -145,7 +145,7 @@
             <button type="submit" class="btn btn-warning">
                 <i class="fa fa-save"></i> Update Car
             </button>
-            <a asp-action="Index" class="btn btn-secondary">
+            <a asp-action="Index" class="btn btn-secondary ms-3">
                 <i class="fa fa-arrow-left"></i> Back to List
             </a>
         </div>

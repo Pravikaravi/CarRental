@@ -1,5 +1,289 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewBag.Title = "Booking Management";
+    Layout = null;
 }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - CarGo</title>
+
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0B1225 0%, #1E293B 50%, #334155 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .Navigation {
+            height: 90px;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0B1225;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .car-rental-heading {
+            font-size: 28px;
+            font-family: 'Gill Sans', Calibri, sans-serif;
+            color: #0fc0fc;
+            margin: 0;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+            .nav a {
+                color: white;
+                text-decoration: none;
+                font-size: 1em;
+                padding: 10px 8px;
+                border-radius: 2px;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+                .nav a:hover {
+                    color: #0fc0fc;
+                    transform: scale(1.05);
+                    text-decoration: underline;
+                    text-decoration-thickness: 2px;
+                    text-underline-offset: 6px;
+                }
+
+        .back-btn {
+            color: #0fc0fc;
+            font-size: 1.5rem;
+            text-decoration: none;
+            margin-right: 15px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+            .back-btn:hover {
+                color: #ffffff;
+                transform: scale(1.2);
+            }
+
+        /* Booking Section */
+        .booking-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            background-color: #1E293B;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+            .booking-container h2 {
+                text-align: center;
+                color: #0fc0fc;
+                margin-bottom: 25px;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0B1225;
+            color: #0fc0fc;
+            font-weight: bold;
+        }
+
+        tr {
+            background-color: #334155;
+            border-bottom: 1px solid #475569;
+        }
+
+            tr:hover {
+                background-color: #475569;
+            }
+
+        td {
+            color: #ffffff;
+        }
+
+        /* Status badges */
+        .status {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .status-pending {
+            background-color: #facc15;
+            color: #0B1225;
+        }
+
+        .status-confirmed {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .status-cancelled {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .status-completed {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        /* Buttons */
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn-view {
+            background-color: #0fc0fc;
+            color: #0B1225;
+        }
+
+            .btn-view:hover {
+                background-color: #09a0d8;
+                transform: scale(1.05);
+            }
+
+        .btn-edit {
+            background-color: #22c55e;
+            color: #ffffff;
+        }
+
+            .btn-edit:hover {
+                background-color: #16a34a;
+                transform: scale(1.05);
+            }
+
+        .btn-delete {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+            .btn-delete:hover {
+                background-color: #dc2626;
+                transform: scale(1.05);
+            }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="Navigation">
+        <div class="logo">
+            <a href="javascript:history.back()" class="back-btn">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+            <img src="~/Images/logo.png" alt="CarGo Logo" style="height: 50px; object-fit: contain;">
+            <h1 class="car-rental-heading">Booking Management</h1>
+        </div>
+        <div class="nav">
+            <a href="@Url.Action("AdminDashboard", "Admin")">Dashboard</a>
+            <a href="@Url.Action("AdminProfile", "Admin")">Profile</a>
+            <a href="@Url.Action("AdminNotifications", "Admin")">Notifications</a>
+            <a href="@Url.Action("StaffManagement", "Admin")">Staff</a>
+            <a href="@Url.Action("BookingManagement", "Admin")">Bookings</a>
+            <a href="@Url.Action("CarManagement", "Admin")">Cars</a>
+            <a href="@Url.Action("NewBooking", "Admin")">New Booking</a>
+        </div>
+    </div>
+
+    <!-- Booking Content -->
+    <div class="booking-container">
+        <h2>Manage Bookings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Customer</th>
+                    <th>Car</th>
+                    <th>Pickup Date</th>
+                    <th>Return Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Row 1 -->
+                <tr>
+                    <td>#B001</td>
+                    <td>John Doe</td>
+                    <td>Toyota Corolla</td>
+                    <td>10-Sep-2025</td>
+                    <td>12-Sep-2025</td>
+                    <td><span class="status status-pending">Pending</span></td>
+                    <td>
+                        <button class="action-btn btn-view"><i class="fa fa-eye"></i> View</button>
+                        <button class="action-btn btn-edit"><i class="fa fa-pen"></i> Edit</button>
+                        <button class="action-btn btn-delete"><i class="fa fa-trash"></i> Delete</button>
+                    </td>
+                </tr>
+
+                <!-- Example Row 2 -->
+                <tr>
+                    <td>#B002</td>
+                    <td>Sarah Smith</td>
+                    <td>Honda Civic</td>
+                    <td>11-Sep-2025</td>
+                    <td>14-Sep-2025</td>
+                    <td><span class="status status-confirmed">Confirmed</span></td>
+                    <td>
+                        <button class="action-btn btn-view"><i class="fa fa-eye"></i> View</button>
+                        <button class="action-btn btn-edit"><i class="fa fa-pen"></i> Edit</button>
+                        <button class="action-btn btn-delete"><i class="fa fa-trash"></i> Delete</button>
+                    </td>
+                </tr>
+
+                <!-- Example Row 3 -->
+                <tr>
+                    <td>#B003</td>
+                    <td>Mike Johnson</td>
+                    <td>Ford Explorer</td>
+                    <td>08-Sep-2025</td>
+                    <td>09-Sep-2025</td>
+                    <td><span class="status status-cancelled">Cancelled</span></td>
+                    <td>
+                        <button class="action-btn btn-view"><i class="fa fa-eye"></i> View</button>
+                        <button class="action-btn btn-edit"><i class="fa fa-pen"></i> Edit</button>
+                        <button class="action-btn btn-delete"><i class="fa fa-trash"></i> Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
