@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Customer Dashboard";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+
+<h2 style="color:#0fc0fc;"><i class="fa fa-gauge"></i> Welcome to Your Dashboard</h2>
+
+<div class="row" style="margin-top:30px; display:flex; gap:20px; flex-wrap:wrap;">
+    <div class="card" style="flex:1; background-color:#1E293B; padding:20px; border-radius:12px; box-shadow:0 0 15px #0fc0fc;">
+        <h3 style="color:#0fc0fc;"><i class="fa fa-list"></i> Total Bookings</h3>
+        <p style="font-size:32px; color:#fcd34d;" id="totalBookings">@ViewBag.TotalBookings</p>
+    </div>
+
+    <div class="card" style="flex:1; background-color:#1E293B; padding:20px; border-radius:12px; box-shadow:0 0 15px #22c55e;">
+        <h3 style="color:#22c55e;"><i class="fa fa-check-circle"></i> Active Bookings</h3>
+        <p style="font-size:32px; color:#fcd34d;" id="activeBookings">@ViewBag.ActiveBookings</p>
+    </div>
+
+    <div class="card" style="flex:1; background-color:#1E293B; padding:20px; border-radius:12px; box-shadow:0 0 15px #ef4444;">
+        <h3 style="color:#ef4444;"><i class="fa fa-times-circle"></i> Cancelled Bookings</h3>
+        <p style="font-size:32px; color:#fcd34d;" id="cancelledBookings">@ViewBag.CancelledBookings</p>
+    </div>
+
+    <div class="dashboard-actions" style="margin-top:20px;">
+        <h4 style="color:#fcd34d;">Ready to hit the road?</h4>
+        <a asp-controller="Booking" asp-action="CreateBooking" class="btn btn-primary" style="background-color:#0fc0fc; color:#0B1225;">
+            Book a Car
+        </a>
+    </div>
+    >
+
+
+</div>
+
+@section Scripts {
+    <script>
+        anime({
+            targets: '#totalBookings',
+            innerHTML: [0, parseInt('@ViewBag.TotalBookings')],
+            easing: 'easeOutExpo',
+            round: 1,
+            duration: 1500
+        });
+
+        anime({
+            targets: '#activeBookings',
+            innerHTML: [0, parseInt('@ViewBag.ActiveBookings')],
+            easing: 'easeOutExpo',
+            round: 1,
+            duration: 1500
+        });
+
+        anime({
+            targets: '#cancelledBookings',
+            innerHTML: [0, parseInt('@ViewBag.CancelledBookings')],
+            easing: 'easeOutExpo',
+            round: 1,
+            duration: 1500
+        });
+    </script>
+}

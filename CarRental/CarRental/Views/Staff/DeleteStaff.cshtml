@@ -1,0 +1,16 @@
+﻿@model CarRental.Models.Staff
+@{
+    ViewData["Title"] = "Delete Staff";
+    Layout = null;
+}
+
+<div class="form-container">
+    <h2><i class="fa fa-trash"></i> Confirm Delete</h2>
+    <p>Are you sure you want to delete <strong>@Model.Name</strong>?</p>
+
+    <form asp-action="DeleteConfirmed">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn-submit" style="background-color:#ef4444;"><i class="fa fa-trash"></i> Delete</button>
+        <a asp-action="Index" class="btn-submit" style="background-color:#64748b;"><i class="fa fa-arrow-left"></i> Cancel</a>
+    </form>
+</div>

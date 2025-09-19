@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Access Denied";
+    var userName = User?.Identity?.IsAuthenticated == true ? User.Identity.Name : "Guest";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0B1225;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .denied-box {
+            text-align: center;
+            background: #1E293B;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #f87171;
+        }
+
+        a {
+            color: #0fc0fc;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <div class="denied-box">
+        <h1>🚫 Access Denied</h1>
+        <p>Hello @userName, you don’t have permission to view this page.</p>
+        <p><a href="@Url.Action("Login", "Account")">Go to Login</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+﻿@model CarRental.Models.Car
+@{
+    ViewBag.Title = "Add New Car";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Add New Car</h2>
+
+<div style="max-height: 80vh; overflow-y: auto; padding-right: 10px;">
+    <form asp-action="Create" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+            <label asp-for="CarName"></label>
+            <input asp-for="CarName" class="form-control" />
+            <span asp-validation-for="CarName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CarBrand"></label>
+            <input asp-for="CarBrand" class="form-control" />
+            <span asp-validation-for="CarBrand" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CarColor"></label>
+            <input asp-for="CarColor" class="form-control" />
+            <span asp-validation-for="CarColor" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CarNumber"></label>
+            <input asp-for="CarNumber" class="form-control" />
+            <span asp-validation-for="CarNumber" class="text-danger"></span>
+        </div>
+
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <div class="form-group" style="flex: 1;">
+                <label asp-for="CarSeats"></label>
+                <input asp-for="CarSeats" type="number" class="form-control" />
+                <span asp-validation-for="CarSeats" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="flex: 1;">
+                <label asp-for="CarRentalAmount">Rental Amount ($)</label>
+                <input asp-for="CarRentalAmount" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="CarRentalAmount" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="CarStatus">Car Status</label>
+            <select asp-for="CarStatus" class="form-control">
+                <option value="Pending">Pending</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="On-Going">On-Going</option>
+                <option value="Returned">Returned</option>
+                <option value="Overdue">Overdue</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <span asp-validation-for="CarStatus" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ImageUrl">Upload Image</label>
+            <input type="file" name="CarImage" class="form-control" />
+        </div>
+
+        <div class="form-group form-check">
+            <input asp-for="IsAvailable" class="form-check-input" type="checkbox" />
+            <label asp-for="IsAvailable" class="form-check-label"></label>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>

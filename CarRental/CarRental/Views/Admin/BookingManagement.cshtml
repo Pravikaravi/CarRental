@@ -1,0 +1,146 @@
+﻿@* @model IEnumerable<CarRental.Models.Booking>
+@{
+    ViewData["Title"] = "Booking Management";
+    Layout = null;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0B1225, #1E293B, #334155);
+        color: #fff;
+        font-family: 'Segoe UI', sans-serif;
+        padding: 20px;
+    }
+
+    .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .search-bar {
+        width: 300px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid #444;
+        background-color: #0B1225;
+        color: #fff;
+    }
+
+    .btn-new {
+        background-color: #0fc0fc;
+        color: #0B1225;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+        .btn-new:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #0fc0fc;
+        }
+
+    .card-grid {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .summary-card {
+        flex: 1;
+        background-color: #1E293B;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(15, 192, 252, 0.2);
+        text-align: center;
+    }
+
+        .summary-card h3 {
+            color: #0fc0fc;
+            margin-bottom: 10px;
+        }
+
+        .summary-card p {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+    .booking-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(255,255,255,0.05);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        .booking-table th, .booking-table td {
+            padding: 12px;
+            border-bottom: 1px solid #444;
+        }
+
+        .booking-table th {
+            background-color: #0B1225;
+            color: #0fc0fc;
+        }
+
+        .booking-table tr:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+</style>
+
+<div class="dashboard-header">
+    <input type="text" class="search-bar" placeholder="Search bookings..." />
+    <a asp-action="NewBooking" class="btn-new">
+        <i class="fa fa-plus"></i> New Booking
+    </a>
+</div>
+
+<div class="card-grid">
+    <div class="summary-card">
+        <h3>Total Bookings</h3>
+        <p>@Model.Count()</p>
+    </div>
+    <div class="summary-card">
+        <h3>Confirmed Bookings</h3>
+        <p>@Model.Count(b => b.Status == "Confirmed")</p>
+    </div>
+    <div class="summary-card">
+        <h3>All Bookings</h3>
+        <p>@Model.Count()</p>
+    </div>
+</div>
+
+<table class="booking-table">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Customer</th>
+            <th>Car</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Id</td>
+                <td>@booking.CustomerName</td>
+                <td>@booking.CarName</td>
+                <td>@booking.BookingDate.ToShortDateString()</td>
+                <td>@booking.Status</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@booking.Id" class="btn btn-sm btn-info">View</a>
+                    <a asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+ *@

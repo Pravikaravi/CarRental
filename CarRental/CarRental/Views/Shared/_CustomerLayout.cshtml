@@ -1,0 +1,190 @@
+﻿@using System.Security.Claims
+@{
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - CarGo</title>
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#0B1225 0%,#1E293B 50%,#334155 100%);
+            color: #fff;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .Navigation {
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background-color: #0B1225;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+            .logo img {
+                height: 50px;
+            }
+
+        .car-rental-heading {
+            font-size: 40px;
+            display: flex;
+            gap: 0.05em;
+            color: #0fc0fc;
+        }
+
+            .car-rental-heading span {
+                display: inline-block;
+                opacity: 0;
+            }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+        }
+
+            .nav a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 18px;
+                padding: 10px;
+                transition: 0.3s;
+            }
+
+                .nav a:hover {
+                    color: #0fc0fc;
+                }
+
+        .profile .dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: #0B1225;
+            border-radius: 10px;
+            min-width: 180px;
+            z-index: 10;
+        }
+
+            .profile .dropdown a {
+                display: block;
+                padding: 10px 15px;
+                color: #fff;
+                text-decoration: none;
+            }
+
+                .profile .dropdown a:hover {
+                    background-color: #0fc0fc;
+                    color: #0B1225;
+                }
+
+        .profile:hover .dropdown {
+            display: block;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #0fc0fc;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="Navigation">
+        <div class="logo">
+            <img src="~/Images/logo.png" alt="CarGo Logo">
+            <h1 class="car-rental-heading">
+                <span>C</span><span>a</span><span>r</span><span>G</span><span>o</span>
+            </h1>
+        </div>
+        <div class="nav">
+            <a href="@Url.Action("CustomerDashboard", "Customer")"><i class="fas fa-tachometer-alt"></i> Dashboard </a>
+            <a href="@Url.Action("CreateProfile", "Customer")"><i class="fas fa-user-edit"></i> Profile</a>
+            <a href="@Url.Action("MyBookings", "Customer")"><i class="fas fa-clock"></i> My Bookings</a>
+            <a href="@Url.Action("CreateBooking", "Booking")"><i class="fas fa-car"></i> Create Booking</a>
+            <a href="@Url.Action("CancelBooking", "Booking")"><i class="fas fa-ban"></i> Cancel Booking</a>
+            <a href="@Url.Action("Notifications", "Customer")"><i class="fas fa-bell"></i> Notifications</a>
+
+            <div class="profile">
+                <a href="@Url.Action("EditProfile", "Customer")"><i class="fas fa-user-circle"></i> Account</a>
+                <div class="dropdown">
+                    <a href="@Url.Action("EditProfile", "Customer")">Edit Profile</a>
+                    <a href="@Url.Action("Logout", "Account")">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <!-- Cursor -->
+    <div class="cursor-dot"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cursor = document.querySelector('.cursor-dot');
+            let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
+            document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+            function animateCursor() {
+                posX += (mouseX - posX) * 0.15;
+                posY += (mouseY - posY) * 0.15;
+                cursor.style.transform = `translate(${posX}px, ${posY}px)`;
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            const letters = document.querySelectorAll('.car-rental-heading span');
+            anime.timeline({ loop: true })
+                .add({
+                    targets: letters,
+                    translateY: [-50, 0],
+                    opacity: [0, 1],
+                    scale: [0.5, 1],
+                    rotate: [-20, 0],
+                    color: [{ value: '#0fc0fc', duration: 500 }, { value: '#fcd34d', duration: 500 }],
+                    delay: anime.stagger(150),
+                    easing: 'easeOutElastic(1, .8)'
+                })
+                .add({
+                    targets: letters,
+                    opacity: 0,
+                    delay: anime.stagger(100),
+                    duration: 500,
+                    easing: 'easeInExpo'
+                });
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

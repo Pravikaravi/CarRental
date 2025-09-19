@@ -1,0 +1,59 @@
+﻿@model CarRental.Models.Booking
+@{
+
+    ViewBag.Title = "Create Booking";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+
+    var cars = ViewBag.CarList as List<CarRental.Models.Car>;
+}
+
+<h2 style="color:#0fc0fc;">Select a Car</h2>
+
+<!-- Car List -->
+<div class="row" style="display:flex; flex-wrap:wrap; gap:20px; margin-bottom:40px;">
+    @foreach (var car in cars)
+    {
+        <div class="card" style="flex:1; min-width:250px; background-color:#1E293B; color:#fff; padding:20px; border-radius:12px; box-shadow:0 0 10px #0fc0fc; position:relative;">
+            <h4 style="color:#0fc0fc;">@car.CarName</h4>
+            <p>Price per day: <strong style="color:#fcd34d;">Rs. @car.CarRentalAmount</strong></p>
+            <button type="button" class="btn btn-primary" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%);" onclick="selectCar('@car.Id', '@car.CarName')">
+                BOOK
+            </button>
+        </div>
+    }
+</div>
+
+<!-- Booking Form -->
+<h3 style="color:#0fc0fc;">Booking Form</h3>
+
+<form asp-action="CreateBooking" method="post">
+    <input type="hidden" id="SelectedCarId" name="CarId" />
+
+    <div class="form-group">
+        <label style="color:#fcd34d;">Car Name</label>
+        <input type="text" id="SelectedCarName" class="form-control" readonly style="background-color:#334155; color:#fff;" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PickupDate" style="color:#fcd34d;"></label>
+        <input asp-for="PickupDate" type="date" class="form-control" style="background-color:#334155; color:#fff;" />
+        <span asp-validation-for="PickupDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReturnDate" style="color:#fcd34d;"></label>
+        <input asp-for="ReturnDate" type="date" class="form-control" style="background-color:#334155; color:#fff;" />
+        <span asp-validation-for="ReturnDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success" style="background-color:#0fc0fc; color:#0B1225;">Book Now</button>
+</form>
+
+@section Scripts {
+    <script>
+        function selectCar(carId, carName) {
+            document.getElementById("SelectedCarId").value = carId;
+            document.getElementById("SelectedCarName").value = carName;
+        }
+    </script>
+}

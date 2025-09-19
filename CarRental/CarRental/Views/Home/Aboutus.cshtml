@@ -1,45 +1,82 @@
 ﻿@{
     ViewData["Title"] = "About Us";
-    Layout = null; // standalone page
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Layout = null; // standalone page
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewData["Title"] - Car Rental</title>
+    <title>@ViewData["Title"] - CarGo Rental</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0B1225 0%, #1E293B 50%, #334155 100%);
             color: #f8f9fa;
             min-height: 100vh;
         }
 
         .about-section {
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
         .about-title {
             color: #0fc0fc;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
         }
 
         .about-list li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1.1rem;
+            position: relative;
+            padding-left: 25px;
         }
 
             .about-list li::before {
-                content: "✔ ";
+                content: "✔";
                 color: #0fc0fc;
                 font-weight: bold;
+                position: absolute;
+                left: 0;
+                top: 0;
             }
 
         .about-img {
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+            .about-img:hover {
+                transform: scale(1.05);
+            }
+
+        .card-highlight {
+            background: rgba(15, 192, 252, 0.1);
+            border-left: 5px solid #0fc0fc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        @@media (max-width: 767px) {
+            .about-title
+
+        {
+            font-size: 2rem;
+        }
+
         }
     </style>
 </head>
@@ -47,28 +84,30 @@
     <div class="container about-section">
         <div class="row align-items-center">
             <!-- Left content -->
-            <div class="col-md-6 mb-4 mb-md-0">
-                <h2 class="about-title mb-4">About Our Car Rental Service</h2>
+            <div class="col-md-6 mb-4 mb-md-0 about-text">
+                <h2 class="about-title">About <span class="text-info">CarGo Rental</span></h2>
                 <p>
-                    Welcome to <strong>Car Rental Management System</strong>!
-                    We are dedicated to providing <span class="text-info fw-bold">reliable, affordable,</span>
-                    and well-maintained vehicles for all your travel needs.
+                    Welcome to <strong>CarGo Rental</strong>! We are committed to providing
+                    <span class="fw-bold text-info">reliable, affordable,</span> and top-quality vehicles for all your travel needs.
                 </p>
                 <p>
-                    Whether you are planning a family vacation, a business trip,
-                    or just need a car for a few days, we ensure a smooth and hassle-free rental experience.
+                    Whether it's a family vacation, business trip, or a quick ride, we ensure a seamless and hassle-free rental experience.
                 </p>
-                <ul class="about-list list-unstyled">
-                    <li>Wide range of cars available</li>
-                    <li>Affordable daily rates</li>
-                    <li>Easy booking system</li>
-                    <li>24/7 customer support</li>
-                </ul>
+
+                <div class="card-highlight">
+                    <ul class="about-list list-unstyled mb-0">
+                        <li>Wide range of cars for every occasion</li>
+                        <li>Competitive daily rates</li>
+                        <li>Easy and fast booking system</li>
+                        <li>24/7 dedicated customer support</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Right image -->
             <div class="col-md-6 text-center">
-                <img src="~/images/BMWBlack.png" class="img-fluid about-img" alt="Car Rental" />
+                <!-- Razor-friendly image path -->
+                <img src="@Url.Content("~/images/BMWBlack.png")" class="img-fluid about-img" alt="Car Rental" />
             </div>
         </div>
     </div>

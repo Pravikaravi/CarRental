@@ -1,0 +1,48 @@
+﻿@model List<CarRental.Models.Booking>
+@{
+    ViewBag.Title = "My Bookings";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<h2>My Bookings</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Car</th>
+                <th>Pickup Date</th>
+                <th>Return Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@(booking.Car != null ? booking.Car.CarName : "N/A")</td>
+                    <td>@booking.PickupDate.ToShortDateString()</td>
+                    <td>@booking.ReturnDate.ToShortDateString()</td>
+                    <td>@(booking.Status ?? "N/A")</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(booking.Status) &&
+                                        (booking.Status == "Pending" || booking.Status == "Confirmed"))
+                        {
+                            <a asp-action="CancelBooking" asp-route-id="@booking.Id" class="btn btn-danger btn-sm">Cancel</a>
+                        }
+                        else
+                        {
+                            <span>N/A</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No bookings found.</p>
+}

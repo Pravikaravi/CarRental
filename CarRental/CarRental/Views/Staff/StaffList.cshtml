@@ -1,0 +1,136 @@
+﻿@model IEnumerable<CarRental.Models.Staff>
+@{
+    ViewData["Title"] = "Staff List";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - CarGo</title>
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0B1225 0%, #1E293B 50%, #334155 100%);
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        h2 {
+            color: #0fc0fc;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .alert-success {
+            background-color: #0fc0fc;
+            color: #0B1225;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 0 10px #0fc0fc;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1E293B;
+            box-shadow: 0 0 10px #0fc0fc;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+        }
+
+        th {
+            background-color: #0fc0fc;
+            color: #0B1225;
+        }
+
+        tr:hover {
+            background-color: #334155;
+            transition: background-color 0.3s ease;
+        }
+
+        .status-active {
+            color: #0fc0fc;
+            font-weight: bold;
+        }
+
+        .status-inactive {
+            color: #ff4c4c;
+            font-weight: bold;
+        }
+
+        .action-btn {
+            background-color: #0fc0fc;
+            color: #0B1225;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            text-decoration: none;
+            margin-right: 6px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .action-btn:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 8px #0fc0fc;
+            }
+    </style>
+</head>
+<body>
+    <h2>Staff List</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert-success">@TempData["SuccessMessage"]</div>
+    }
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Date Joined</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var staff in Model)
+            {
+                <tr>
+                    <td>@staff.Name</td>
+                    <td>@staff.EmailId</td>
+                    <td>@staff.PhoneNumber</td>
+                    <td>@staff.DateJoined.ToString("yyyy-MM-dd")</td>
+                    <td class="@(staff.IsActive ? "status-active" : "status-inactive")">
+                        @(staff.IsActive ? "Active" : "Inactive")
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Details", "Staff", new { id = staff.Id })" class="action-btn">View</a>
+                        <a href="@Url.Action("Edit", "Staff", new { id = staff.Id })" class="action-btn">Edit</a>
+                        @if (staff.IsActive)
+                        {
+                            <form asp-action="Delete" asp-controller="Staff" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@staff.Id" />
+                                <button type="submit" class="action-btn" style="background-color:#ff4c4c; color:white;">Deactivate</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

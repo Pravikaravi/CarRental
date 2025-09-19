@@ -1,0 +1,97 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - CarGo</title>
+
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .Navigation {
+            height: 90px;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0B1225;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .car-rental-heading {
+            font-size: 28px;
+            font-family: 'Gill Sans', Calibri, sans-serif;
+            color: #0fc0fc;
+            margin: 0;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+            .nav a {
+                color: white;
+                text-decoration: none;
+                font-size: 1em;
+                padding: 10px 8px;
+                border-radius: 2px;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+                .nav a:hover {
+                    color: #0fc0fc;
+                    transform: scale(1.05);
+                    text-decoration: underline;
+                    text-decoration-thickness: 2px;
+                    text-underline-offset: 6px;
+                }
+
+        .back-btn {
+            color: #0fc0fc;
+            font-size: 1.5rem;
+            text-decoration: none;
+            margin-right: 15px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+            .back-btn:hover {
+                color: #ffffff;
+                transform: scale(1.2);
+            }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <div class="Navigation">
+        <div class="logo">
+            <a href="javascript:history.back()" class="back-btn">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+            <img src="~/Images/logo.png" alt="CarGo Logo" style="height: 50px; object-fit: contain;">
+            <h1 class="car-rental-heading">Welcome Staff</h1>
+        </div>
+        <div class="nav">
+            <a href="@Url.Action("StaffDashboard", "Staff")">Dashboard</a>
+            <a href="@Url.Action("StaffProfile", "Staff")">Profile</a>
+            <a href="@Url.Action("Notifications", "Staff")">Notifications</a>
+            <a href="@Url.Action("Customers", "Staff")">Customers</a>
+            <a href="@Url.Action("Index", "Car")">Cars</a>
+        </div>
+    </div>
+
+    <!-- Page content -->
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

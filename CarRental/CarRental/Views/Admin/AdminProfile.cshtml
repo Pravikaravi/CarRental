@@ -1,0 +1,124 @@
+﻿@model CarRental.Models.User
+@{
+    ViewBag.Title = "Admin Profile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .profile-wrapper {
+        display: flex;
+        justify-content: center; /* center horizontally */
+        align-items: center; /* center vertically */
+        padding: 40px;
+        min-height: calc(100vh - 90px); /* subtract header height */
+    }
+
+    .profile-box {
+        width: 400px;
+        background-color: #1E293B;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px #0fc0fc;
+        text-align: center;
+    }
+
+        .profile-box h2 {
+            color: #0fc0fc;
+            margin-bottom: 20px;
+        }
+
+    .profile-photo {
+        height: 120px;
+        width: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #0fc0fc;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .profile-label {
+        color: #0fc0fc;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .profile-value {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        background-color: #334155;
+        color: white;
+        box-shadow: inset 0 0 5px #0fc0fc;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #0fc0fc;
+        color: #0B1225;
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px #0fc0fc;
+    }
+
+    input[type="file"] {
+        margin-top: 10px;
+        background-color: #334155;
+        color: white;
+        border: none;
+        padding: 8px;
+        border-radius: 6px;
+        width: 100%;
+    }
+</style>
+
+<div class="profile-wrapper">
+    <div class="profile-box">
+        <h2>Admin Profile</h2>
+
+        @if (!string.IsNullOrEmpty(Model.ProfilePhotoUrl))
+        {
+            <img src="@Model.ProfilePhotoUrl" alt="Profile Photo" class="profile-photo" />
+        }
+        else
+        {
+            <img src="~/Images/default-profile.png" alt="Default Photo" class="profile-photo" />
+        }
+
+        <!-- Only update image -->
+        <form asp-action="UpdateProfileImage" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="file" name="ProfilePhoto" />
+            <button type="submit" class="btn btn-primary" style="margin-top:10px;">Update Image</button>
+        </form>
+
+        <div class="form-group">
+            <label class="profile-label">UserName</label>
+            <div class="profile-value">@Model.UserName</div>
+        </div>
+
+        <div class="form-group">
+            <label class="profile-label">Role</label>
+            <div class="profile-value">@Model.Role</div>
+        </div>
+
+        <div class="form-group">
+            <label class="profile-label">Password</label>
+            <div class="profile-value">@Model.Password</div>
+        </div>
+    </div>
+</div>

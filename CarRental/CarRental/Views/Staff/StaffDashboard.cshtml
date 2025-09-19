@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Staff Dashboard";
+    Layout = "~/Views/Shared/_StaffLayout.cshtml";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0B1225 0%, #1E293B 50%, #334155 100%);
+        color: #ffffff;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dashboard-cards {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+
+    .card {
+        background-color: #1E293B;
+        padding: 30px;
+        border-radius: 12px;
+        min-width: 200px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+            background-color: #0fc0fc22;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 2em;
+            color: #0fc0fc;
+        }
+
+        .card p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            color: #ffffffaa;
+        }
+</style>
+
+<div style="padding:40px; text-align:center;">
+    <h2>Staff Dashboard</h2>
+    <p>Overview of your workspace.</p>
+
+    <div class="dashboard-cards">
+        <div class="card">
+            <h3>@ViewBag.TotalCars</h3>
+            <p>Total Cars</p>
+        </div>
+        <div class="card">
+            <h3>@ViewBag.TotalCustomers</h3>
+            <p>Total Customers</p>
+        </div>
+        <div class="card">
+            <h3>@ViewBag.TotalFeedback</h3>
+            <p>Notifications</p>
+        </div>
+    </div>
+</div>

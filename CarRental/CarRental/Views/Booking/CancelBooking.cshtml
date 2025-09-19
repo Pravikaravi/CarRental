@@ -1,0 +1,27 @@
+﻿@model CarRental.Models.Booking
+@{
+    ViewBag.Title = "Cancel Booking";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<h2 style="color:#facc15;"><i class="fa fa-ban"></i> Cancel Booking</h2>
+
+<div class="alert" style="background-color:#ef4444; color:#fff; padding:15px; border-radius:8px; box-shadow:0 0 10px #ef4444;">
+    <p>Are you sure you want to cancel this booking?</p>
+</div>
+
+<div style="margin-bottom:20px;">
+    <p><strong style="color:#0fc0fc;">Car:</strong> @Model.Car.CarName (@Model.Car.CarNumber)</p>
+    <p><strong style="color:#0fc0fc;">Pickup:</strong> @Model.PickupDate.ToShortDateString()</p>
+    <p><strong style="color:#0fc0fc;">Return:</strong> @Model.ReturnDate.ToShortDateString()</p>
+</div>
+
+<form asp-action="CancelBookingConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn" style="background-color:#ef4444; color:#fff; font-weight:bold; box-shadow:0 0 10px #ef4444;">
+        <i class="fa fa-times-circle"></i> Yes, Cancel
+    </button>
+    <a asp-action="MyBookings" class="btn" style="background-color:#334155; color:#fff; margin-left:10px;">
+        <i class="fa fa-arrow-left"></i> No, Go Back
+    </a>
+</form>

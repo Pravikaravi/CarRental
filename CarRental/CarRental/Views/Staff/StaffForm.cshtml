@@ -1,0 +1,69 @@
+﻿@model CarRental.Models.Staff
+@{
+    ViewData["Title"] = "Staff Form";
+    Layout = null;
+}
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: auto;
+        background-color: #1E293B;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(15, 192, 252, 0.3);
+        color: #fff;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #0fc0fc;
+    }
+
+    .form-control {
+        background-color: #0B1225;
+        color: #fff;
+        border: 1px solid #444;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .btn-submit {
+        background-color: #0fc0fc;
+        color: #0B1225;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 10px 20px;
+        transition: 0.3s;
+    }
+
+        .btn-submit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #0fc0fc;
+        }
+</style>
+
+<div class="form-container">
+    <h2><i class="fa fa-user-plus"></i> @ViewData["Title"]</h2>
+    <form asp-action="@ViewData["Action"]">
+        <input type="hidden" asp-for="Id" />
+
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" required />
+
+        <label>Address</label>
+        <input asp-for="Address" class="form-control" required />
+
+        <label>Email</label>
+        <input asp-for="EmailId" class="form-control" required />
+
+        <label>Phone</label>
+        <input asp-for="PhoneNumber" class="form-control" required />
+
+        <label>User ID</label>
+        <input asp-for="UserId" class="form-control" required />
+
+        <button type="submit" class="btn-submit"><i class="fa fa-save"></i> Save</button>
+    </form>
+</div>

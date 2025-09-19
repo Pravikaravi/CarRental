@@ -1,1 +1,217 @@
-﻿
+﻿@model IEnumerable<CarRental.Models.Car>
+
+<!-- Carousel -->
+<div id="bannerCarousel" class="carousel slide container mt-4" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/Images/Pravi1.jpg" class="d-block w-100" alt="Banner 1" style="height: 300px; object-fit: cover;">
+        </div>
+        <div class="carousel-item active">
+            <img src="~/Images/Pravi2.jpg" class="d-block w-100" alt="Banner 1" style="height: 300px; object-fit: cover;">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- Search Form -->
+<div class="search-container">
+    <div class="search-panel">
+        <form id="searchForm" onsubmit="return false;">
+            <select id="brandFilter" required>
+                <option value="">All Brands</option>
+                <option value="Honda">Honda</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Subaru">Subaru</option>
+                <option value="BMW">BMW</option>
+                <option value="Mahindra">Mahindra</option>
+            </select>
+            <select id="modelFilter" disabled required>
+                <option value="">Select Model</option>
+            </select>
+            <button type="button" id="searchBtn" disabled>Search</button>
+        </form>
+    </div>
+</div>
+
+<!-- Car Cards -->
+<div class="car-container" id="carMenu">
+    @foreach (var car in Model)
+    {
+        <div class="car-card" data-brand="@car.CarBrand" data-model="@car.CarName">
+            <img src="@car.ImageUrl" alt="@car.CarName" />
+            <h3>@car.CarName</h3>
+            <p>@car.CarBrand • @car.CarSeats Seats • @car.CarStatus</p>
+            <div class="price-rating">
+                <span class="price">LKR @car.CarRentalAmount/day</span>
+                <div class="rating"><i class="fas fa-star"></i><span>4.5</span></div>
+            </div>
+            <a asp-controller="Booking" asp-action="Create" asp-route-id="@car.Id" class="book-btn">Book</a>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    <script>
+        const models = {
+            "Honda": ["Civic", "Accord", "CR-V", "HR-V", "Pilot"],
+            "Toyota": ["Corolla", "Camry", "Prius", "RAV4", "Hilux"],
+            "Nissan": ["Altima", "Maxima", "Sentra", "Patrol", "GT-R"],
+            "Subaru": ["Impreza", "Legacy", "Forester", "Outback", "WRX"],
+            "BMW": ["3 Series", "5 Series", "7 Series", "X5", "M3"],
+            "Mahindra": ["Scorpio", "XUV500", "XUV700", "Thar", "Bolero"]
+        };
+
+        const brandFilter = document.getElementById("brandFilter");
+        const modelFilter = document.getElementById("modelFilter");
+        const searchBtn = document.getElementById("searchBtn");
+
+        brandFilter.addEventListener("change", function () {
+            const brand = this.value;
+            modelFilter.innerHTML = '<option value="">Select Model</option>';
+            modelFilter.disabled = true;
+            searchBtn.disabled = true;
+
+            if (brand && models[brand]) {
+                models[brand].forEach(model => {
+                    let option = document.createElement("option");
+                    option.value = model;
+                    option.textContent = model;
+                    modelFilter.appendChild(option);
+                });
+                modelFilter.disabled = false;
+            }
+            filterCars(brand, "");
+        });
+
+        modelFilter.addEventListener("change", function () {
+            searchBtn.disabled = !this.value;
+        });
+
+        searchBtn.addEventListener("click", function () {
+            const brand = brandFilter.value;
+            const model = modelFilter.value;
+            filterCars(brand, model);
+        });
+
+        function filterCars(brand, model) {
+            const cars = document.querySelectorAll(".car-card");
+            cars.forEach(car => {
+                const carBrand = car.getAttribute("data-brand");
+                const carModel = car.getAttribute("data-model");
+
+                if ((!brand || carBrand === brand) && (!model || carModel === model)) {
+                    car.style.display = "block";
+                } else {
+                    car.style.display = "none";
+                }
+            });
+        }
+
+        filterCars("", "");
+    </script>
+}
+
+<style>
+    /* ===== Car Cards ===== */
+    .car-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .car-card {
+        flex: 1 1 300px;
+        max-width: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.05);
+        transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+        cursor: pointer;
+        padding: 10px;
+        text-align: center;
+    }
+
+        .car-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 13px 30px #0fc0fc;
+        }
+
+            .car-card:hover img {
+                transform: scale(1.1);
+            }
+
+        .car-card h3 {
+            margin: 10px 0 5px;
+        }
+
+        .car-card p {
+            font-size: 0.8em;
+            color: #ccc;
+        }
+
+    .price-rating {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        font-size: 0.8em;
+    }
+
+        .price-rating .price {
+            color: #0fc0fc;
+            font-weight: bold;
+        }
+
+        .price-rating .rating i {
+            color: gold;
+        }
+
+    .book-btn {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #0fc0fc;
+        color: #0B1225;
+        border: none;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .book-btn:hover {
+            background-color: #0fc0fc;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #0fc0fc, 0 0 20px #0fc0fc;
+        }
+
+    /* ===== Carousel ===== */
+    .carousel-inner img {
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        background-color: #0fc0fc;
+        border-radius: 50%;
+        padding: 10px;
+    }
+</style>
