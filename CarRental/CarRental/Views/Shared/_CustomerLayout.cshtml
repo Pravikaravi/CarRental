@@ -127,19 +127,19 @@
         </div>
         <div class="nav">
             <a href="@Url.Action("CustomerDashboard", "Customer")"><i class="fas fa-tachometer-alt"></i> Dashboard </a>
-            <a href="@Url.Action("CreateProfile", "Customer")"><i class="fas fa-user-edit"></i> Profile</a>
+            <a href="@Url.Action("Profile", "Customer")"><i class="fas fa-user-edit"></i> Profile</a>
             <a href="@Url.Action("MyBookings", "Customer")"><i class="fas fa-clock"></i> My Bookings</a>
             <a href="@Url.Action("CreateBooking", "Booking")"><i class="fas fa-car"></i> Create Booking</a>
             <a href="@Url.Action("CancelBooking", "Booking")"><i class="fas fa-ban"></i> Cancel Booking</a>
             <a href="@Url.Action("Notifications", "Customer")"><i class="fas fa-bell"></i> Notifications</a>
 
-            <div class="profile">
+            @* <div class="profile">
                 <a href="@Url.Action("EditProfile", "Customer")"><i class="fas fa-user-circle"></i> Account</a>
                 <div class="dropdown">
                     <a href="@Url.Action("EditProfile", "Customer")">Edit Profile</a>
                     <a href="@Url.Action("Logout", "Account")">Logout</a>
                 </div>
-            </div>
+            </div> *@
         </div>
     </div>
 

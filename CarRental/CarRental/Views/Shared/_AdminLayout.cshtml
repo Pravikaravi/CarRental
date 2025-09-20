@@ -93,17 +93,20 @@
             <a href="javascript:history.back()" class="back-btn">
                 <i class="fa fa-arrow-left"></i>
             </a>
-            <img src="~/Images/logo.png" alt="CarGo Logo" style="height: 50px; object-fit: contain;">
-            <h1 class="car-rental-heading">Welcome Admin</h1>
+            <div class="logo">
+                <a href="@Url.Action("Index", "Home")" class="d-flex align-items-center text-decoration-none">
+                    <img src="~/Images/logo.png" alt="Welcome Admin!" style="height: 50px; object-fit: contain;">
+                    
+                </a>
+            </div>
+            <h1 class="car-rental-heading ms-2">Welcome Admin!</h1>
         </div>
         <div class="nav">
             <a href="@Url.Action("AdminDashboard", "Admin")">Dashboard</a>
             <a href="@Url.Action("AdminProfile", "Admin")">Profile</a>
-            <a href="@Url.Action("AdminNotifications", "Admin")">Notifications</a>
             <a href="@Url.Action("Index", "Car")">Cars</a>
             <a href="@Url.Action("StaffManagement", "Staff")">Staff</a>
             <a href="@Url.Action("BookingManagement", "Booking")">Bookings</a>
-            <a href="@Url.Action("NewBooking", "Booking")">New Booking</a>
         </div>
     </div>
 

@@ -38,6 +38,13 @@ namespace CarRentalMS.Web.Controllers
                     return View();
                 }
 
+                // ✅ Add password strength check here
+                if (password.Length < 6 || !password.Any(char.IsUpper) || !password.Any(char.IsLower) || !password.Any(char.IsDigit))
+                {
+                    ViewBag.Error = "Password must be at least 6 characters and include uppercase, lowercase, and a number.";
+                    return View();
+                }
+
                 var existingUser = _context.User.FirstOrDefault(u => u.UserName == email);
                 if (existingUser != null)
                 {
@@ -94,11 +101,22 @@ namespace CarRentalMS.Web.Controllers
                 _context.User.Add(newUser);
                 _context.SaveChanges();
 
+                // ✅ Add Customer record
+                var customer = new Customer
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = newUser.Id,
+                    Email = newUser.UserName
+                };
+                _context.Customer.Add(customer);
+                _context.SaveChanges();
+
                 HttpContext.Session.Clear();
 
                 TempData["SuccessMessage"] = "Account created successfully! Please login.";
                 return RedirectToAction("Login");
             }
+
 
             ViewBag.Error = "Invalid OTP. Please try again.";
             ViewBag.ShowOtpForm = true;
@@ -238,12 +256,30 @@ namespace CarRentalMS.Web.Controllers
                 }
             }
 
+            // ✅ Add Customer entry if role = Customer
+            if (user.Role == "Customer")
+            {
+                var existingCustomer = _context.Customer.FirstOrDefault(c => c.UserId == user.Id);
+                if (existingCustomer == null)
+                {
+                    var customer = new Customer
+                    {
+                        Id = Guid.NewGuid(),
+                        UserId = user.Id,
+                        Email = user.UserName
+                    };
+                    _context.Customer.Add(customer);
+                    _context.SaveChanges();
+                }
+            }
+
             HttpContext.Session.SetString("UserName", user.UserName);
             HttpContext.Session.SetString("Role", user.Role);
             HttpContext.Session.SetString("ProfilePic", user.ProfilePhotoUrl ?? "");
 
             return Redirect(returnUrl);
         }
+
 
 
 

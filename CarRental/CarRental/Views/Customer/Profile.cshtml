@@ -1,0 +1,197 @@
+﻿@model CarRental.Models.Customer
+
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    ViewData["Title"] = "My Profile";
+}
+
+<style>
+    /* Page wrapper */
+    .profile-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        min-height: calc(100vh - 90px);
+        background-color: #0B1225;
+    }
+
+    /* Form box */
+    .profile-box {
+        width: 800px;
+        background-color: #1E293B;
+        padding: 40px;
+        border-radius: 18px;
+        box-shadow: 0 0 25px #0fc0fc;
+        color: #fff;
+    }
+
+        .profile-box h2 {
+            color: #0fc0fc;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+    /* Form labels */
+    .form-label {
+        color: #0fc0fc;
+        font-weight: 600;
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    /* Inputs */
+    .form-control {
+        background-color: #334155 !important;
+        color: #fff !important;
+        border: 1px solid #0fc0fc !important;
+        border-radius: 8px !important;
+        padding: 14px !important;
+        font-size: 15px !important;
+        height: 50px !important;
+        margin-bottom: 20px; /* line space between fields */
+    }
+
+        .form-control:focus {
+            box-shadow: 0 0 6px #0fc0fc;
+            border-color: #0fc0fc;
+        }
+
+    /* File inputs */
+    input[type="file"] {
+        margin-top: 5px;
+        background-color: #334155 !important;
+        color: white !important;
+        border: none !important;
+        padding: 12px !important;
+        border-radius: 8px !important;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 12px 24px !important;
+        border-radius: 12px !important;
+        font-weight: bold !important;
+        font-size: 16px !important;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #0fc0fc !important;
+        color: #0B1225 !important;
+        box-shadow: 0 0 15px #0fc0fc;
+    }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #0fc0fc;
+        }
+
+    /* Alerts */
+    .alert {
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="profile-wrapper">
+    <div class="profile-box">
+        <h2><i class="fa fa-user-edit"></i> Customer Profile</h2>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">@TempData["Success"]</div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">@TempData["Error"]</div>
+        }
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+        <form asp-action="Profile" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="UserId" />
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" readonly />
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Address" class="form-label"></label>
+                    <input asp-for="Address" class="form-control" required />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="PhoneNumber" class="form-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" pattern="^[0-9]{10}$" title="Enter valid 10-digit phone number" required />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="NicNumber" class="form-label"></label>
+                    <input asp-for="NicNumber" class="form-control" required />
+                    <span asp-validation-for="NicNumber" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">NIC Image</label>
+                    <input type="file" name="NicImage" />
+                    @if (!string.IsNullOrEmpty(Model.NicImageUrl))
+                    {
+                        <small class="text-info">Current: @System.IO.Path.GetFileName(Model.NicImageUrl)</small>
+                    }
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="DrivingLicenceNumber" class="form-label"></label>
+                    <input asp-for="DrivingLicenceNumber" class="form-control" required />
+                    <span asp-validation-for="DrivingLicenceNumber" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Driving License Image</label>
+                    <input type="file" name="DLImage" />
+                    @if (!string.IsNullOrEmpty(Model.DLImageUrl))
+                    {
+                        <small class="text-info">Current: @System.IO.Path.GetFileName(Model.DLImageUrl)</small>
+                    }
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="DLIssueDate" class="form-label"></label>
+                    <input asp-for="DLIssueDate" type="date" class="form-control" required />
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="DLExpiryDate" class="form-label"></label>
+                    <input asp-for="DLExpiryDate" type="date" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i> Save Change
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

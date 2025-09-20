@@ -99,56 +99,9 @@
 
     <div style="margin-bottom: 20px; text-align: center;">
         <a href="@Url.Action("CreateStaff", "Staff")" class="btn btn-details">➕ Add Staff</a>
-        <a href="@Url.Action("List", "Staff")" class="btn btn-details ">📋 Staff List</a>
+        <a href="@Url.Action("StaffList", "Staff")" class="btn btn-details ">📋 Staff List</a>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        <tbody>
-            @if (Model != null && Model.Any())
-            {
-                foreach (var staff in Model)
-                {
-                    <tr>
-                        <td>@(staff?.Name ?? "N/A")</td>
-                        <td>@(staff?.EmailId ?? "N/A")</td>
-                        <td>@(staff?.PhoneNumber ?? "N/A")</td>
-                        <td>@(staff?.IsActive == true ? "Active" : "Inactive")</td>
-                        <td>
-                            @if (staff?.Id != Guid.Empty)
-                            {
-                                <a asp-action="Edit" asp-route-id="@staff.Id" class="btn btn-edit"><i class="fa fa-edit"></i></a>
-                                <a asp-action="Details" asp-route-id="@staff.Id" class="btn btn-details"><i class="fa fa-eye"></i></a>
-                                <form asp-action="Delete" method="post" style="display:inline;">
-                                    <input type="hidden" name="id" value="@staff.Id" />
-                                    <button type="submit" class="btn btn-delete"><i class="fa fa-trash"></i></button>
-                                </form>
-                            }
-                            else
-                            {
-                                <span style="color:#ff4c4c;">Invalid ID</span>
-                            }
-                        </td>
-                    </tr>
-                }
-            }
-            else
-            {
-                <tr>
-                    <td colspan="5" style="text-align:center;">No staff records found.</td>
-                </tr>
-            }
-        </tbody>
-        </tbody>
-    </table>
+    
 </body>
 </html>
