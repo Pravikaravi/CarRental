@@ -1,7 +1,7 @@
-﻿@* @model IEnumerable<CarRental.Models.Booking>
+﻿@model IEnumerable<CarRental.Models.Booking>
 @{
     ViewData["Title"] = "Booking Management";
-    Layout = null;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -121,7 +121,9 @@
             <th>Booking ID</th>
             <th>Customer</th>
             <th>Car</th>
-            <th>Date</th>
+            <th>Pickup Date</th>
+            <th>Return Date</th>
+            <th>Total Amount</th>
             <th>Status</th>
             <th>Actions</th>
         </tr>
@@ -130,17 +132,36 @@
         @foreach (var booking in Model)
         {
             <tr>
-                <td>@booking.Id</td>
-                <td>@booking.CustomerName</td>
-                <td>@booking.CarName</td>
-                <td>@booking.BookingDate.ToShortDateString()</td>
-                <td>@booking.Status</td>
+                <td>@booking.Id.ToString().Substring(0, 8)...</td>
+                <td>@(booking.Customer?.Name ?? "N/A")</td>
+                <td>@(booking.Car?.CarName ?? "N/A")</td>
+                <td>@booking.PickupDate.ToShortDateString()</td>
+                <td>@booking.ReturnDate.ToShortDateString()</td>
+                <td>LKR @booking.TotalBookingAmount.ToString("N2")</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@booking.Id" class="btn btn-sm btn-info">View</a>
-                    <a asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <span class="badge @(booking.Status == "Pending" ? "bg-warning" : 
+                                          booking.Status == "Confirmed" ? "bg-success" : 
+                                          booking.Status == "Cancelled" ? "bg-danger" : "bg-secondary")">
+                        @booking.Status
+                    </span>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-info">View</a>
+                    @if (booking.Status == "Pending")
+                    {
+                        <form asp-action="UpdateBookingStatus" method="post" style="display: inline;">
+                            <input type="hidden" name="bookingId" value="@booking.Id" />
+                            <input type="hidden" name="status" value="Confirmed" />
+                            <button type="submit" class="btn btn-sm btn-success">Confirm</button>
+                        </form>
+                        <form asp-action="UpdateBookingStatus" method="post" style="display: inline;">
+                            <input type="hidden" name="bookingId" value="@booking.Id" />
+                            <input type="hidden" name="status" value="Cancelled" />
+                            <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
+                        </form>
+                    }
                 </td>
             </tr>
         }
     </tbody>
 </table>
- *@

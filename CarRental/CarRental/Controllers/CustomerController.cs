@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
-namespace CarRental.Controllers
+namespace CarRentalMS.Web.Controllers
 {
     [Authorize(Roles = "Customer")]
     public class CustomerController : Controller
@@ -44,9 +45,48 @@ namespace CarRental.Controllers
         }
 
         [HttpGet]
-        public IActionResult CustomerDashboard()
+        public async Task<IActionResult> CustomerDashboard()
         {
+            var userId = GetUserId();
+            var customer = await _context.Customer.FirstOrDefaultAsync(c => c.UserId == userId);
+            
+            if (customer == null)
+            {
+                ViewBag.TotalBookings = 0;
+                ViewBag.ActiveBookings = 0;
+                ViewBag.CancelledBookings = 0;
+                return View("CustomerDashboard");
+            }
+
+            var bookings = await _context.Booking
+                .Where(b => b.CustomerId == customer.Id)
+                .ToListAsync();
+
+            ViewBag.TotalBookings = bookings.Count;
+            ViewBag.ActiveBookings = bookings.Count(b => b.Status == "Pending" || b.Status == "Confirmed" || b.Status == "On-Going");
+            ViewBag.CancelledBookings = bookings.Count(b => b.Status == "Cancelled");
+
             return View("CustomerDashboard");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> MyBookings()
+        {
+            var userId = GetUserId();
+            var customer = await _context.Customer.FirstOrDefaultAsync(c => c.UserId == userId);
+            
+            if (customer == null)
+            {
+                return View(new List<Booking>());
+            }
+
+            var bookings = await _context.Booking
+                .Include(b => b.Car)
+                .Where(b => b.CustomerId == customer.Id)
+                .OrderByDescending(b => b.PickupDate)
+                .ToListAsync();
+
+            return View(bookings);
         }
 
         [HttpPost]

@@ -17,6 +17,7 @@ namespace CarRentalMS.Web.Data
         public DbSet<Feedback> Feedback { get; set; }
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<Banner> Banner { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

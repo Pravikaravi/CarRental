@@ -3,8 +3,10 @@ using CarRentalMS.Web.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CarRentalMS.Web.Controllers
 {
@@ -26,16 +28,52 @@ namespace CarRentalMS.Web.Controllers
             ViewBag.UserName = User.Identity.Name;
 
             int totalCars = _context.Cars.Count();
-            int totalCustomers = _context.Customer.Count(); // Replace with your actual DbSet name
+            int totalCustomers = _context.Customer.Count();
             int totalStaffs = _context.Staffs.Count();
+            int totalBookings = _context.Booking.Count();
+            int pendingBookings = _context.Booking.Count(b => b.Status == "Pending");
+            int activeBookings = _context.Booking.Count(b => b.Status == "Confirmed" || b.Status == "On-Going");
 
             ViewBag.TotalCars = totalCars;
             ViewBag.TotalCustomers = totalCustomers;
             ViewBag.TotalStaffs = totalStaffs;
+            ViewBag.TotalBookings = totalBookings;
+            ViewBag.PendingBookings = pendingBookings;
+            ViewBag.ActiveBookings = activeBookings;
 
             return View();
         }
 
+        // GET: Admin/BookingManagement
+        public async Task<IActionResult> BookingManagement()
+        {
+            var bookings = await _context.Booking
+                .Include(b => b.Customer)
+                .Include(b => b.Car)
+                .OrderByDescending(b => b.PickupDate)
+                .ToListAsync();
+
+            return View(bookings);
+        }
+
+        // POST: Admin/UpdateBookingStatus
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateBookingStatus(Guid bookingId, string status)
+        {
+            var booking = await _context.Booking.FindAsync(bookingId);
+            if (booking == null)
+            {
+                return NotFound();
+            }
+
+            booking.Status = status;
+            _context.Update(booking);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Booking status updated successfully!";
+            return RedirectToAction("BookingManagement");
+        }
 
         [HttpGet]
         public IActionResult AdminProfile()
@@ -172,6 +210,12 @@ namespace CarRentalMS.Web.Controllers
             return RedirectToAction("StaffList");
         }
 
+
+        public IActionResult Index()
+        {
+            var banners = _context.Banner.ToList();
+            return View(banners);
+        }
         //public IActionResult AdminDashboard()
         //{
         //    if (HttpContext.Session.GetString("Role") != "Admin")

@@ -11,6 +11,7 @@ wwwroot\images\Banner2.gif
 wwwroot\images\BMW.png
 wwwroot\images\BMWBlack.png
 wwwroot\images\driver.png
+wwwroot\images\f49091e7-3946-4136-969f-8c94c0c0c332.png
 wwwroot\images\Honda-Accord.png
 wwwroot\images\honda.png
 wwwroot\images\HondaCivic2.png
@@ -20,6 +21,7 @@ wwwroot\images\logo2.png
 wwwroot\images\Profile.png
 wwwroot\images\RRR.jpg
 wwwroot\images\suv.png
+wwwroot\images\team-avengers.jpeg
 wwwroot\images\tesla.png
 wwwroot\images\Thumbs.db
 wwwroot\images\Toyato Coralla.webp
@@ -85,15 +87,24 @@ wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
 wwwroot\uploads\03908efe-fbca-4bfb-9245-0e0fa08e4dfc.jpg
+wwwroot\uploads\0da6e353-16c2-4047-8d7d-3133e6d18710.png
+wwwroot\uploads\292ef189-c4c6-4953-8855-d96081bccbc6.jpg
 wwwroot\uploads\2de78295-f3c0-49f1-a89d-24360ef4d0e9.jpg
 wwwroot\uploads\38facaf8-a93b-449d-9745-b985adce62b4.jpg
+wwwroot\uploads\4da3dcb8-0ab2-4d6b-a1ef-cf6b234a03c1.png
+wwwroot\uploads\5aac4783-e6fa-4bb3-8cdd-26d3c70d73f1.png
+wwwroot\uploads\745f06e8-9dba-4591-8779-de29cf09994b.png
+wwwroot\uploads\831babbc-7969-4b79-94a7-924a812a9968.jpeg
+wwwroot\uploads\8db3d64a-62ad-4774-9297-788956e64c3a.png
+wwwroot\uploads\8fe6f8d2-66a9-4533-af2f-9de435b47235.jpg
+wwwroot\uploads\98db5d3a-55d3-454d-8130-70d7730885c6.png
+wwwroot\uploads\a1adad47-1f39-4888-990a-cf57383eb1c3.png
+wwwroot\uploads\a841de87-2864-4134-811b-b77948ed561e.png
 wwwroot\uploads\c6bdde93-7ac3-4d54-8f73-60bc9f16d2fc.jpg
+wwwroot\uploads\cb04d940-f9d5-4955-9c2c-9a22633f4b94.png
+wwwroot\uploads\e2b1e88d-df47-42d0-bb48-385e0215e913.jpg
+wwwroot\uploads\eb06e738-952a-40e5-9c64-ebebde7b7b3e.png
 wwwroot\uploads\f4652637-d00a-47c2-afc6-0d460d5c71fc.jpg
 wwwroot\uploads\f9a35a78-654d-40d3-bbe1-fb0086b1fd14.jpg
-wwwroot\uploads\IMG-20250704-WA0052.jpg
-wwwroot\uploads\292ef189-c4c6-4953-8855-d96081bccbc6.jpg
 wwwroot\uploads\Generated Image September 16, 2025 - 7_50AM.png
-wwwroot\images\team-avengers.jpeg
-wwwroot\images\f49091e7-3946-4136-969f-8c94c0c0c332.png
-wwwroot\uploads\cb04d940-f9d5-4955-9c2c-9a22633f4b94.png
-wwwroot\uploads\eb06e738-952a-40e5-9c64-ebebde7b7b3e.png
+wwwroot\uploads\IMG-20250704-WA0052.jpg

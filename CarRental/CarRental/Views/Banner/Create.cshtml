@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Add Banner";
+}
+
+<h2>Add Banner</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" placeholder="Banner Title" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image</label>
+        <input type="file" name="image" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success">Upload Banner</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

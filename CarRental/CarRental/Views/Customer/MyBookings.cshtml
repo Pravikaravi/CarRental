@@ -14,6 +14,7 @@
                 <th>Car</th>
                 <th>Pickup Date</th>
                 <th>Return Date</th>
+                <th>Total Amount</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -25,6 +26,7 @@
                     <td>@(booking.Car != null ? booking.Car.CarName : "N/A")</td>
                     <td>@booking.PickupDate.ToShortDateString()</td>
                     <td>@booking.ReturnDate.ToShortDateString()</td>
+                    <td>LKR @booking.TotalBookingAmount.ToString("N2")</td>
                     <td>@(booking.Status ?? "N/A")</td>
                     <td>
                         @if (!string.IsNullOrEmpty(booking.Status) &&
