@@ -56,6 +56,8 @@ namespace CarRentalMS.Web.Controllers
             return View(bookings);
         }
 
+        
+
         // POST: Admin/UpdateBookingStatus
         [HttpPost]
         [ValidateAntiForgeryToken]

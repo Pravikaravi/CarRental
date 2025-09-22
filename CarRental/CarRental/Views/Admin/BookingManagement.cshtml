@@ -93,12 +93,6 @@
         }
 </style>
 
-<div class="dashboard-header">
-    <input type="text" class="search-bar" placeholder="Search bookings..." />
-    <a asp-action="NewBooking" class="btn-new">
-        <i class="fa fa-plus"></i> New Booking
-    </a>
-</div>
 
 <div class="card-grid">
     <div class="summary-card">
@@ -146,7 +140,7 @@
                     </span>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-info">View</a>
+                    
                     @if (booking.Status == "Pending")
                     {
                         <form asp-action="UpdateBookingStatus" method="post" style="display: inline;">

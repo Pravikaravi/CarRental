@@ -49,7 +49,7 @@ namespace CarRentalMS.Web.Controllers
         {
             var userId = GetUserId();
             var customer = await _context.Customer.FirstOrDefaultAsync(c => c.UserId == userId);
-            
+
             if (customer == null)
             {
                 ViewBag.TotalBookings = 0;
@@ -74,7 +74,7 @@ namespace CarRentalMS.Web.Controllers
         {
             var userId = GetUserId();
             var customer = await _context.Customer.FirstOrDefaultAsync(c => c.UserId == userId);
-            
+
             if (customer == null)
             {
                 return View(new List<Booking>());
@@ -91,16 +91,8 @@ namespace CarRentalMS.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Profile(Customer model, IFormFile NicImage, IFormFile DLImage)
+        public async Task<IActionResult> Profile(Customer model, IFormFile? NicImage, IFormFile? DLImage)
         {
-            if (!ModelState.IsValid)
-            {
-                var errors = ModelState.Values.SelectMany(v => v.Errors)
-                                              .Select(e => e.ErrorMessage);
-                TempData["Error"] = string.Join(" | ", errors);
-                return View(model);
-            }
-
             var userId = GetUserId();
             var customer = await _context.Customer.FirstOrDefaultAsync(c => c.UserId == userId);
 
@@ -115,26 +107,25 @@ namespace CarRentalMS.Web.Controllers
                 _context.Customer.Add(customer);
             }
 
-            // Update fields
+            // Only update editable fields
             customer.Name = model.Name;
             customer.Address = model.Address;
             customer.PhoneNumber = model.PhoneNumber;
-            customer.NicNumber = model.NicNumber;
-            customer.DrivingLicenceNumber = model.DrivingLicenceNumber;
-            customer.DLIssueDate = model.DLIssueDate;
-            customer.DLExpiryDate = model.DLExpiryDate;
 
-            // Save files
+            // Optionally update files if new files are uploaded
             if (NicImage != null && NicImage.Length > 0)
                 customer.NicImageUrl = await SaveFile(NicImage);
 
             if (DLImage != null && DLImage.Length > 0)
                 customer.DLImageUrl = await SaveFile(DLImage);
 
+            // Keep all other non-editable fields intact (do not overwrite)
+            // customer.NicNumber, DrivingLicenceNumber, DLIssueDate, DLExpiryDate remain unchanged
+
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Profile saved successfully!";
-            return View(customer); // stay on same page
+            TempData["Success"] = "Profile updated successfully!";
+            return View(customer);
         }
 
         private async Task<string> SaveFile(IFormFile file)
@@ -151,5 +142,24 @@ namespace CarRentalMS.Web.Controllers
 
             return "/uploads/" + fileName;
         }
+
+        // ==================== CANCEL BOOKING ACTION ====================
+        [HttpGet]
+        public async Task<IActionResult> CancelBooking(Guid id)
+        {
+            var booking = await _context.Booking.FindAsync(id);
+            if (booking == null)
+            {
+                TempData["ErrorMessage"] = "Booking not found!";
+                return RedirectToAction("MyBookings");
+            }
+
+            booking.Status = "Cancelled";
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Your booking has been cancelled successfully!";
+            return RedirectToAction("MyBookings");
+        }
+        // ===============================================================
     }
 }
