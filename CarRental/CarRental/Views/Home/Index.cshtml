@@ -14,7 +14,7 @@
         <div class="carousel-item active">
             <img src="~/Images/Pravi1.jpg" class="d-block w-100" alt="Banner 1" style="height: 300px; object-fit: cover;">
         </div>
-        <div class="carousel-item active">
+        <div class="carousel-item">
             <img src="~/Images/Pravi2.jpg" class="d-block w-100" alt="Banner 1" style="height: 300px; object-fit: cover;">
         </div>
     </div>
@@ -28,29 +28,9 @@
     </button>
 </div>
 
-<!-- Search Form -->
-<div class="search-container">
-    <div class="search-panel">
-        <form id="searchForm" onsubmit="return false;">
-            <select id="brandFilter" required>
-                <option value="">All Brands</option>
-                <option value="Honda">Honda</option>
-                <option value="Toyota">Toyota</option>
-                <option value="Nissan">Nissan</option>
-                <option value="Subaru">Subaru</option>
-                <option value="BMW">BMW</option>
-                <option value="Mahindra">Mahindra</option>
-            </select>
-            <select id="modelFilter" disabled required>
-                <option value="">Select Model</option>
-            </select>
-            <button type="button" id="searchBtn" disabled>Search</button>
-        </form>
-    </div>
-</div>
 
 <!-- Car Cards -->
-<div class="car-container" id="carMenu">
+<div class="car-container" id="carMenu" style="margin-top: 50px;">
     @foreach (var car in Model)
     {
         <div class="car-card" data-brand="@car.CarBrand" data-model="@car.CarName">
@@ -61,7 +41,11 @@
                 <span class="price">LKR @car.CarRentalAmount/day</span>
                 <div class="rating"><i class="fas fa-star"></i><span>4.5</span></div>
             </div>
-            <button type="button" class="book-btn" onclick="openBookingModal('@car.Id', '@car.CarName', '@car.CarBrand', @car.CarRentalAmount)">Book</button>
+            <button type="button" class="book-btn"
+                    onclick="console.log('Book button clicked for @car.CarName'); openBookingModal('@car.Id', '@car.CarName', '@car.CarBrand', '@car.CarRentalAmount')">
+                Book
+            </button>
+
         </div>
     }
 </div>
@@ -225,6 +209,35 @@
 
 @section Scripts {
     <script>
+        // Wait for DOM and Bootstrap to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing booking functionality');
+            console.log('Bootstrap available:', typeof bootstrap !== 'undefined');
+            console.log('jQuery available:', typeof $ !== 'undefined');
+            
+            // Initialize event listeners after DOM is ready
+            initializeBookingFunctionality();
+        });
+
+        function initializeBookingFunctionality() {
+            // Calculate total amount when dates change
+            const pickupDateInput = document.getElementById('pickupDate');
+            const returnDateInput = document.getElementById('returnDate');
+            
+            if (pickupDateInput) {
+                pickupDateInput.addEventListener('change', calculateTotalAmount);
+            }
+            if (returnDateInput) {
+                returnDateInput.addEventListener('change', calculateTotalAmount);
+            }
+            
+            // Initialize filter functionality
+            initializeFilterFunctionality();
+            
+            // Initialize car filtering
+            filterCars("", "");
+        }
+
         const models = {
             "Honda": ["Civic", "Accord", "CR-V", "HR-V", "Pilot"],
             "Toyota": ["Corolla", "Camry", "Prius", "RAV4", "Hilux"],
@@ -234,37 +247,42 @@
             "Mahindra": ["Scorpio", "XUV500", "XUV700", "Thar", "Bolero"]
         };
 
-        const brandFilter = document.getElementById("brandFilter");
-        const modelFilter = document.getElementById("modelFilter");
-        const searchBtn = document.getElementById("searchBtn");
+        // Initialize filter functionality if elements exist
+        function initializeFilterFunctionality() {
+            const brandFilter = document.getElementById("brandFilter");
+            const modelFilter = document.getElementById("modelFilter");
+            const searchBtn = document.getElementById("searchBtn");
 
-        brandFilter.addEventListener("change", function () {
-            const brand = this.value;
-            modelFilter.innerHTML = '<option value="">Select Model</option>';
-            modelFilter.disabled = true;
-            searchBtn.disabled = true;
+            if (brandFilter && modelFilter && searchBtn) {
+                brandFilter.addEventListener("change", function () {
+                    const brand = this.value;
+                    modelFilter.innerHTML = '<option value="">Select Model</option>';
+                    modelFilter.disabled = true;
+                    searchBtn.disabled = true;
 
-            if (brand && models[brand]) {
-                models[brand].forEach(model => {
-                    let option = document.createElement("option");
-                    option.value = model;
-                    option.textContent = model;
-                    modelFilter.appendChild(option);
+                    if (brand && models[brand]) {
+                        models[brand].forEach(model => {
+                            let option = document.createElement("option");
+                            option.value = model;
+                            option.textContent = model;
+                            modelFilter.appendChild(option);
+                        });
+                        modelFilter.disabled = false;
+                    }
+                    filterCars(brand, "");
                 });
-                modelFilter.disabled = false;
+
+                modelFilter.addEventListener("change", function () {
+                    searchBtn.disabled = !this.value;
+                });
+
+                searchBtn.addEventListener("click", function () {
+                    const brand = brandFilter.value;
+                    const model = modelFilter.value;
+                    filterCars(brand, model);
+                });
             }
-            filterCars(brand, "");
-        });
-
-        modelFilter.addEventListener("change", function () {
-            searchBtn.disabled = !this.value;
-        });
-
-        searchBtn.addEventListener("click", function () {
-            const brand = brandFilter.value;
-            const model = modelFilter.value;
-            filterCars(brand, model);
-        });
+        }
 
         function filterCars(brand, model) {
             const cars = document.querySelectorAll(".car-card");
@@ -280,12 +298,13 @@
             });
         }
 
-        filterCars("", "");
-
         // Booking Modal Functions
         let currentBookingData = {};
 
         function openBookingModal(carId, carName, carBrand, rentalRate) {
+            console.log('Opening booking modal for:', carName); // Debug log
+            console.log('Modal element exists:', document.getElementById('bookingModal') !== null);
+            
             currentBookingData = {
                 carId: carId,
                 carName: carName,
@@ -293,32 +312,58 @@
                 rentalRate: rentalRate
             };
 
-            document.getElementById('selectedCarId').value = carId;
-            document.getElementById('selectedCarName').textContent = carName;
-            document.getElementById('selectedCarBrand').textContent = carBrand;
-            document.getElementById('carRentalRate').textContent = rentalRate;
+            const selectedCarId = document.getElementById('selectedCarId');
+            const selectedCarName = document.getElementById('selectedCarName');
+            const selectedCarBrand = document.getElementById('selectedCarBrand');
+            const carRentalRate = document.getElementById('carRentalRate');
+
+            if (selectedCarId) selectedCarId.value = carId;
+            if (selectedCarName) selectedCarName.textContent = carName;
+            if (selectedCarBrand) selectedCarBrand.textContent = carBrand;
+            if (carRentalRate) carRentalRate.textContent = rentalRate;
 
             // Reset form
-            document.getElementById('pickupDate').value = '';
-            document.getElementById('returnDate').value = '';
-            document.getElementById('totalAmount').value = '';
+            const pickupDate = document.getElementById('pickupDate');
+            const returnDate = document.getElementById('returnDate');
+            const totalAmount = document.getElementById('totalAmount');
+
+            if (pickupDate) pickupDate.value = '';
+            if (returnDate) returnDate.value = '';
+            if (totalAmount) totalAmount.value = '';
 
             // Set minimum date to today
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('pickupDate').min = today;
-            document.getElementById('returnDate').min = today;
+            if (pickupDate) pickupDate.min = today;
+            if (returnDate) returnDate.min = today;
 
             // Reset button visibility
-            document.getElementById('nextBtn').style.display = 'inline-block';
-            document.getElementById('confirmBtn').style.display = 'none';
+            const nextBtn = document.getElementById('nextBtn');
+            const confirmBtn = document.getElementById('confirmBtn');
+            if (nextBtn) nextBtn.style.display = 'inline-block';
+            if (confirmBtn) confirmBtn.style.display = 'none';
 
-            const modal = new bootstrap.Modal(document.getElementById('bookingModal'));
-            modal.show();
+            // Wait for Bootstrap to be available
+            const modalElement = document.getElementById('bookingModal');
+            if (modalElement) {
+                if (typeof bootstrap !== 'undefined') {
+                    console.log('Using Bootstrap modal');
+                    const modal = new bootstrap.Modal(modalElement);
+                    modal.show();
+                } else if (typeof $ !== 'undefined') {
+                    console.log('Using jQuery modal fallback');
+                    $(modalElement).modal('show');
+                } else {
+                    console.error('Neither Bootstrap nor jQuery is available');
+                    // Fallback: show modal manually
+                    modalElement.style.display = 'block';
+                    modalElement.classList.add('show');
+                    document.body.classList.add('modal-open');
+                }
+            } else {
+                console.error('Modal element not found');
+            }
         }
 
-        // Calculate total amount when dates change
-        document.getElementById('pickupDate').addEventListener('change', calculateTotalAmount);
-        document.getElementById('returnDate').addEventListener('change', calculateTotalAmount);
 
         function calculateTotalAmount() {
             const pickupDate = document.getElementById('pickupDate').value;

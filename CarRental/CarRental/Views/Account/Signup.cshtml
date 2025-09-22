@@ -23,6 +23,8 @@
             justify-content: center;
         }
 
+
+
         .signup-container {
             background: rgba(255, 255, 255, 0.05);
             padding: 40px;
@@ -101,6 +103,19 @@
                 box-shadow: 0 0 15px #0fc0fc;
             }
 
+            .form-control {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff !important; /* force input text to white */
+    border-radius: 10px;
+}
+
+/* Make placeholder text white too */
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
     </style>
 </head>
 <body>
@@ -134,16 +149,27 @@
 
 <div class="mb-3 text-start">
     <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" name="password" id="password"
-           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" 
-           title="Password must be at least 6 characters, include uppercase, lowercase, and a number" 
-           required />
+    <div class="input-group">
+        <input type="password" class="form-control" name="password" id="password"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" 
+               title="Password must be at least 6 characters, include uppercase, lowercase, and a number" 
+               required />
+        <span class="input-group-text bg-transparent text-white" style="cursor:pointer;" id="togglePassword">
+            <i class="bi bi-eye" id="eyeIcon1"></i>
+        </span>
+    </div>
 </div>
 
 <div class="mb-3 text-start">
     <label for="confirmPassword" class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" required />
+    <div class="input-group">
+        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" required />
+        <span class="input-group-text bg-transparent text-white" style="cursor:pointer;" id="toggleConfirmPassword">
+            <i class="bi bi-eye" id="eyeIcon2"></i>
+        </span>
+    </div>
 </div>
+
 
 <button type="submit" class="btn-signup">Send OTP</button>
 
@@ -155,5 +181,24 @@
             <a asp-controller="Account" asp-action="Login">Login</a>
         </p>
     </div>
+    <script>
+    function setupToggle(inputId, toggleId, iconId) {
+        const toggle = document.getElementById(toggleId);
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+
+        toggle.addEventListener("click", function () {
+            const isPassword = input.type === "password";
+            input.type = isPassword ? "text" : "password";
+            icon.classList.toggle("bi-eye");
+            icon.classList.toggle("bi-eye-slash");
+        });
+    }
+
+    // Setup for both fields
+    setupToggle("password", "togglePassword", "eyeIcon1");
+    setupToggle("confirmPassword", "toggleConfirmPassword", "eyeIcon2");
+</script>
+
 </body>
 </html>

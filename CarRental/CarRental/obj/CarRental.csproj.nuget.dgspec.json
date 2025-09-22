@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Group Project\\sep13\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\CarRental.csproj": {}
+    "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\CarRental.csproj": {}
   },
   "projects": {
-    "D:\\Group Project\\sep13\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\CarRental.csproj": {
+    "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\CarRental.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Group Project\\sep13\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\CarRental.csproj",
+        "projectUniqueName": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\CarRental.csproj",
         "projectName": "CarRental",
-        "projectPath": "D:\\Group Project\\sep13\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\CarRental.csproj",
+        "projectPath": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\CarRental.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Group Project\\sep13\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\obj\\",
+        "outputPath": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

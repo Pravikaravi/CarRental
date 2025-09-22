@@ -212,12 +212,31 @@ namespace CarRentalMS.Web.Controllers
             return RedirectToAction("StaffList");
         }
 
+        //Feedbacks
+        public async Task<IActionResult> Feedbacks()
+        {
+            var feedbacks = await _context.Feedback.ToListAsync();
+            return View(feedbacks);
+        }
 
         public IActionResult Index()
         {
             var banners = _context.Banner.ToList();
             return View(banners);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteFeedback(Guid id)
+        {
+            var feedback = await _context.Feedback.FindAsync(id);
+            if (feedback != null)
+            {
+                _context.Feedback.Remove(feedback);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Feedbacks");
+        }
+
         //public IActionResult AdminDashboard()
         //{
         //    if (HttpContext.Session.GetString("Role") != "Admin")

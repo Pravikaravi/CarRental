@@ -78,7 +78,7 @@ namespace CarRentalMS.Web.Controllers
             if (customer == null)
             {
                 return View(new List<Booking>());
-            }
+           }
 
             var bookings = await _context.Booking
                 .Include(b => b.Car)
@@ -161,5 +161,30 @@ namespace CarRentalMS.Web.Controllers
             return RedirectToAction("MyBookings");
         }
         // ===============================================================
+
+
+        //user feedbacks show in customer dashboard
+
+        [HttpGet]
+        public IActionResult MyFeedbacks()
+        {
+            int userId;
+            try
+            {
+                userId = GetUserId(); // <-- use claims to get the logged-in user's ID
+            }
+            catch
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Fetch only this user's feedbacks
+            var feedbacks = _context.Feedback
+                            .Where(f => f.UserId == userId)
+                            .ToList();
+
+            return View(feedbacks);
+        }
+
     }
 }

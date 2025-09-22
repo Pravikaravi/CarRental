@@ -122,15 +122,19 @@
     <!-- Navbar -->
     <div class="Navigation">
         <div class="logo">
-            <img src="~/Images/logo.png" alt="CarGo Logo">
-            <h1 class="car-rental-heading">
-                <span>C</span><span>a</span><span>r</span><span>G</span><span>o</span>
-            </h1>
+            <a href="@Url.Action("Index", "Home")" class="d-flex align-items-center text-decoration-none">
+                <img src="~/Images/logo.png" alt="CarGo Logo">
+                <h1 class="car-rental-heading">
+                    <span>C</span><span>a</span><span>r</span><span>G</span><span>o</span>
+                </h1>
+            </a>
         </div>
+
         <div class="nav">
             <a href="@Url.Action("CustomerDashboard", "Customer")"><i class="fas fa-tachometer-alt"></i> Dashboard </a>
             <a href="@Url.Action("Profile", "Customer")"><i class="fas fa-user-edit"></i> Profile</a>
             <a href="@Url.Action("MyBookings", "Customer")"><i class="fas fa-clock"></i> My Bookings</a>
+            <a href="@Url.Action("Myfeedbacks", "Customer")"><i class="fas fa-clock"></i> My Feedbacks</a>
             @* <a href="@Url.Action("Notifications", "Customer")"><i class="fas fa-bell"></i> Notifications</a> *@
 
             @* <div class="profile">
