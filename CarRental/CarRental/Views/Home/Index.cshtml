@@ -96,7 +96,7 @@
 <!-- Customer Details Modal -->
 <div  class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
     <div  class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div style="background-color:navy" class="modal-content">
+        <div style="background-color:darkgray" class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="customerModalLabel">👤 Customer Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -187,12 +187,13 @@
 </div>
 
 <!-- Success Modal -->
+<!-- Success Modal -->
 <div class="modal fade success-modal" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: #2d2d2d; color: #ffffff; border: 1px solid #404040;">
             <div class="modal-header border-0">
                 <h5 class="modal-title" id="successModalLabel">🎉 Booking Confirmed!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
             </div>
             <div class="modal-body">
                 <div class="success-icon">✅</div>
@@ -206,6 +207,7 @@
         </div>
     </div>
 </div>
+
 
 @section Scripts {
     <script>
@@ -832,4 +834,20 @@
         border-radius: 50%;
         padding: 10px;
     }
+
+    .success-modal .modal-content {
+        background-color: #2d2d2d !important;
+        color: #ffffff !important;
+        border: 1px solid #404040 !important;
+    }
+
+    .success-modal .btn-close {
+        filter: invert(1) !important;
+    }
+
+    .success-modal .success-icon {
+        font-size: 2em;
+        text-align: center;
+    }
+
 </style>

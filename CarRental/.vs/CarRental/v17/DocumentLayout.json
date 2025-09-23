@@ -3,64 +3,12 @@
   "WorkspaceRootPath": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Migrations\\20250922193113_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CarRental\\Migrations\\20250922193113_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\booking\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\booking\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\shared\\_customerlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\shared\\_customerlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\customer\\myfeedbacks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\customer\\myfeedbacks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\models\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\models\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\admin\\feedbacks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\admin\\feedbacks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\admin\\bookingmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\admin\\bookingmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\home\\contactus.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\home\\contactus.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\admin\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\admin\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|d:\\group project\\sep22\\pravika\\pravika\\carrental\\carrental\\carrental\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{593E2201-14C0-417A-90B9-F3B75DBAD25B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -75,39 +23,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "20250922193113_InitialCreate.cs",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Migrations\\20250922193113_InitialCreate.cs",
-              "RelativeDocumentMoniker": "CarRental\\Migrations\\20250922193113_InitialCreate.cs",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Migrations\\20250922193113_InitialCreate.cs",
-              "RelativeToolTip": "CarRental\\Migrations\\20250922193113_InitialCreate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T19:31:13.456Z",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "CarRental\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "CarRental\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAA0BAAAAAAAAAAAAwCIBAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-23T03:39:23.487Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Car\\Index.cshtml",
-              "RelativeDocumentMoniker": "CarRental\\Views\\Car\\Index.cshtml",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Car\\Index.cshtml",
-              "RelativeToolTip": "CarRental\\Views\\Car\\Index.cshtml",
-              "ViewState": "AgIAAGIBAAAAAAAAAAAowIEBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T18:14:34.937Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Booking\\Index.cshtml",
-              "RelativeDocumentMoniker": "CarRental\\Views\\Booking\\Index.cshtml",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Booking\\Index.cshtml",
-              "RelativeToolTip": "CarRental\\Views\\Booking\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T18:14:17.352Z"
             },
             {
               "$type": "Document",
@@ -117,142 +41,10 @@
               "RelativeDocumentMoniker": "CarRental\\Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "CarRental\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAABEAAAAAAAAAAAAUwB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFUAAAAAMzMzMzMTwGIAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T16:58:07.859Z",
+              "WhenOpened": "2025-09-23T03:07:59.349Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Feedback.cs",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Models\\Feedback.cs",
-              "RelativeDocumentMoniker": "CarRental\\Models\\Feedback.cs",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Models\\Feedback.cs",
-              "RelativeToolTip": "CarRental\\Models\\Feedback.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T14:42:35.9Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Feedbacks.cshtml",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Admin\\Feedbacks.cshtml",
-              "RelativeDocumentMoniker": "CarRental\\Views\\Admin\\Feedbacks.cshtml",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Admin\\Feedbacks.cshtml",
-              "RelativeToolTip": "CarRental\\Views\\Admin\\Feedbacks.cshtml",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAmwJkAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T14:41:38.812Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Contactus.cshtml",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Home\\Contactus.cshtml",
-              "RelativeDocumentMoniker": "CarRental\\Views\\Home\\Contactus.cshtml",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Home\\Contactus.cshtml",
-              "RelativeToolTip": "CarRental\\Views\\Home\\Contactus.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T14:39:57.895Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_CustomerLayout.cshtml",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_CustomerLayout.cshtml",
-              "RelativeDocumentMoniker": "CarRental\\Views\\Shared\\_CustomerLayout.cshtml",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_CustomerLayout.cshtml",
-              "RelativeToolTip": "CarRental\\Views\\Shared\\_CustomerLayout.cshtml",
-              "ViewState": "AgIAAGsAAAAAAAAAAADwv4MAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T14:23:11.232Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "CarRental\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "CarRental\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAGEBAAAAAAAAAAAAwHwBAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T15:10:36.238Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CustomerController.cs",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Controllers\\CustomerController.cs",
-              "RelativeDocumentMoniker": "CarRental\\Controllers\\CustomerController.cs",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Controllers\\CustomerController.cs",
-              "RelativeToolTip": "CarRental\\Controllers\\CustomerController.cs",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAiwLsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T15:59:08.415Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "_AdminLayout.cshtml",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeDocumentMoniker": "CarRental\\Views\\Shared\\_AdminLayout.cshtml",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeToolTip": "CarRental\\Views\\Shared\\_AdminLayout.cshtml",
-              "ViewState": "AgIAAE4AAAAAAAAAAADwv14AAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T14:23:12.681Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Myfeedbacks.cshtml",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Customer\\Myfeedbacks.cshtml",
-              "RelativeDocumentMoniker": "CarRental\\Views\\Customer\\Myfeedbacks.cshtml",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Customer\\Myfeedbacks.cshtml",
-              "RelativeToolTip": "CarRental\\Views\\Customer\\Myfeedbacks.cshtml",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAmwF4AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T16:02:45.06Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Admin.cshtml",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Admin\\Admin.cshtml",
-              "RelativeDocumentMoniker": "CarRental\\Views\\Admin\\Admin.cshtml",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Admin\\Admin.cshtml",
-              "RelativeToolTip": "CarRental\\Views\\Admin\\Admin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T14:39:32.259Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "CarRental\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "CarRental\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAANgAAAAAAAAAAAAAAOgAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T14:43:27.001Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "BookingManagement.cshtml",
-              "DocumentMoniker": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Admin\\BookingManagement.cshtml",
-              "RelativeDocumentMoniker": "CarRental\\Views\\Admin\\BookingManagement.cshtml",
-              "ToolTip": "D:\\Group Project\\sep22\\Pravika\\Pravika\\CarRental\\CarRental\\CarRental\\Views\\Admin\\BookingManagement.cshtml",
-              "RelativeToolTip": "CarRental\\Views\\Admin\\BookingManagement.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJEAAABaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-22T14:51:02.037Z"
             }
           ]
         }

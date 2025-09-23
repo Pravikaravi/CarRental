@@ -1,7 +1,7 @@
-@model CarRental.Models.Customer
+@model IEnumerable<CarRental.Models.Customer>
 @{
-    ViewData["Title"] = "Customer Details";
-    Layout = null;
+    ViewData["Title"] = "Customers";
+    Layout = "~/Views/Shared/_StaffLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -14,40 +14,31 @@
 <body class="bg-dark text-white">
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2>Customer - @Model?.Name</h2>
-            <div>
-                <a class="btn btn-outline-info" href="@Url.Action("Customers", "Staff")">Back</a>
-            </div>
+            <h2>Customers</h2>
+            <a class="btn btn-outline-info" href="@Url.Action("StaffDashboard", "Staff")">Back to Dashboard</a>
         </div>
 
-        <div class="row g-3">
-            <div class="col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-body">
-                        <h5 class="card-title">Contact</h5>
-                        <p class="mb-1"><strong>Email:</strong> @Model?.Email</p>
-                        <p class="mb-1"><strong>Phone:</strong> @Model?.PhoneNumber</p>
-                        <p class="mb-0"><strong>Address:</strong> @Model?.Address</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-body">
-                        <h5 class="card-title">Identity</h5>
-                        <p class="mb-1"><strong>NIC:</strong> @Model?.NicNumber</p>
-                        <p class="mb-1"><strong>DL No:</strong> @Model?.DrivingLicenceNumber</p>
-                        <p class="mb-1"><strong>DL Issue:</strong> @Model?.DLIssueDate</p>
-                        <p class="mb-0"><strong>DL Expiry:</strong> @Model?.DLExpiryDate</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-4">
-            <div class="alert alert-info">
-                Staff can view customer information only. Updates/removals are restricted.
-            </div>
+        <div class="table-responsive">
+            <table class="table table-dark table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in Model)
+                    {
+                        <tr>
+                            <td>@(c.Name ?? c.User?.UserName ?? "-")</td>
+                            <td>@(c.Email ?? c.User?.UserName ?? "-")</td>
+                            <td>@(c.PhoneNumber ?? "-")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 

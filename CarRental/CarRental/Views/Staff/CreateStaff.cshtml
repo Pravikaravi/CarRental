@@ -112,24 +112,43 @@
             <div class="alert alert-success">@TempData["SuccessMessage"]</div>
         }
 
-        <form asp-controller="Staff" asp-action="CreateStaff" method="post">
+        <form asp-controller="Staff" asp-action="CreateStaff" method="post" id="staffForm">
             <label>Full Name</label>
-            <input type="text" name="name" required />
+            <input type="text" name="name" required minlength="3" maxlength="50"
+                   pattern="^[A-Za-z\s]+$" title="Name should only contain letters and spaces (3-50 characters)" />
 
             <label>Email (Login ID)</label>
-            <input type="email" name="email" required />
+            <input type="email" name="email" required
+                   title="Please enter a valid email address" />
 
             <label>Password</label>
-            <input type="password" name="password" required autocomplete="off" />
+            <input type="password" name="password" required minlength="6" maxlength="20"
+                   title="Password must be 6-20 characters long" autocomplete="off" />
 
             <label>Phone Number</label>
-            <input type="text" name="phoneNumber" required />
+            <input type="text" name="phoneNumber" required
+                   pattern="^\d{10}$" maxlength="10"
+                   title="Phone number must be exactly 10 digits" />
 
             <label>Address</label>
-            <textarea name="address" rows="3" required></textarea>
+            <textarea name="address" rows="3" required minlength="5" maxlength="100"
+                      title="Address must be between 5 and 100 characters"></textarea>
 
             <button type="submit" class="btn-submit">Create Staff</button>
         </form>
+
+        <script>
+            $(document).ready(function () {
+                $("#staffForm").on("submit", function (e) {
+                    let phone = $("input[name='phoneNumber']").val();
+                    if (!/^\d{10}$/.test(phone)) {
+                        alert("Phone number must be exactly 10 digits.");
+                        e.preventDefault();
+                    }
+                });
+            });
+        </script>
+
     </div>
 </body>
 </html>

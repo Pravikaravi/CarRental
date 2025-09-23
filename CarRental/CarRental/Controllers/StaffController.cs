@@ -22,20 +22,10 @@ namespace CarRentalMS.Web.Controllers
         // ================= STAFF ROLE =================
 
         //[Authorize(Roles = "Staff")]
-        //public async Task<IActionResult> StaffDashboard()
+        //public IActionResult StaffDashboard()
         //{
-        //    ViewBag.TotalCars = await _context.Cars.CountAsync();
-        //    ViewBag.TotalCustomers = await _context.Customer.CountAsync();
-        //    ViewBag.TotalFeedback = await _context.Feedback.CountAsync();
-        //    return View("StaffDashboard");
+        //    return View();
         //}
-
-        [Authorize(Roles = "Staff")]
-        public IActionResult StaffDashboard()
-        {
-            return View();
-        }
-
 
         [Authorize(Roles = "Staff")]
         public async Task<IActionResult> StaffProfile()
@@ -52,7 +42,7 @@ namespace CarRentalMS.Web.Controllers
             return View("StaffProfile", staff);
         }
 
-        [Authorize(Roles = "Staff")]
+        [Authorize(Roles = "Admin,Staff")]
         public async Task<IActionResult> Edit(Guid id)
         {
             var staff = await _context.Staffs.FindAsync(id);
@@ -60,7 +50,7 @@ namespace CarRentalMS.Web.Controllers
             return View("EditStaff", staff);
         }
 
-        [Authorize(Roles = "Staff")]
+        [Authorize(Roles = "Admin,Staff")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Staff updatedStaff, IFormFile? profilePicture)
@@ -90,16 +80,24 @@ namespace CarRentalMS.Web.Controllers
             _context.Staffs.Update(staff);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(StaffProfile));
+            // ✅ Save a success message in TempData
+            TempData["SuccessMessage"] = "Profile updated successfully!";
+
+            // ✅ Stay on StaffProfile instead of redirecting to StaffList
+            return RedirectToAction("StaffProfile");
         }
+
+
 
         [Authorize(Roles = "Staff")]
         public async Task<IActionResult> Customers()
         {
             var customers = await _context.Customer
+                .Include(c => c.User)      // Include User entity
                 .AsNoTracking()
-                .OrderBy(c => c.Name)
+                .OrderBy(c => c.Name ?? c.User!.UserName)
                 .ToListAsync();
+
             return View("Customers", customers);
         }
 
@@ -107,11 +105,14 @@ namespace CarRentalMS.Web.Controllers
         public async Task<IActionResult> CustomerDetails(Guid id)
         {
             var customer = await _context.Customer
+                .Include(c => c.User)      // Include User for details
                 .AsNoTracking()
                 .FirstOrDefaultAsync(c => c.Id == id);
+
             if (customer == null) return NotFound();
             return View("CustomerDetails", customer);
         }
+
 
         [Authorize(Roles = "Staff")]
         public async Task<IActionResult> Notifications()
@@ -139,6 +140,17 @@ namespace CarRentalMS.Web.Controllers
             return RedirectToAction(nameof(Notifications));
         }
 
+        [Authorize(Roles = "Staff")]
+        public async Task<IActionResult> StaffDashboard()
+        {
+            ViewBag.TotalCars = await _context.Cars.CountAsync();
+            ViewBag.TotalCustomers = await _context.Customer.CountAsync();
+            ViewBag.TotalFeedback = await _context.Feedback.CountAsync();
+
+            return View();
+        }
+
+
         // ================= ADMIN ROLE =================
 
         [Authorize(Roles = "Admin")]
@@ -155,22 +167,12 @@ namespace CarRentalMS.Web.Controllers
             return View("StaffManagement");
         }
 
-
-        //[Authorize(Roles = "Admin")]
-        //[HttpGet]
-        //public IActionResult StaffList()
-        //{
-        //    return View("StaffList");
-        //}
-
-
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult CreateStaff()
         {
             return View("CreateStaff");
         }
-
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
@@ -214,16 +216,13 @@ namespace CarRentalMS.Web.Controllers
                 TempData["SuccessMessage"] = "Staff added successfully!";
                 return RedirectToAction("StaffList");
             }
-            
-               catch (Exception ex)
+            catch (Exception ex)
             {
                 transaction.Rollback();
                 ViewBag.Error = "Error creating staff: " + (ex.InnerException?.Message ?? ex.Message);
                 return View("CreateStaff");
             }
-
         }
-        
 
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(Guid id)
@@ -234,6 +233,38 @@ namespace CarRentalMS.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public async Task<IActionResult> AdminEdit(Guid id)
+        {
+            var staff = await _context.Staffs.FindAsync(id);
+            if (staff == null) return NotFound();
+            return View("EditStaff", staff);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminEdit(Staff updatedStaff)
+        {
+            if (!ModelState.IsValid) return View("EditStaff", updatedStaff);
+
+            var staff = await _context.Staffs.FindAsync(updatedStaff.Id);
+            if (staff == null) return NotFound();
+
+            staff.Name = updatedStaff.Name;
+            staff.Address = updatedStaff.Address;
+            staff.EmailId = updatedStaff.EmailId;
+            staff.PhoneNumber = updatedStaff.PhoneNumber;
+            staff.IsActive = updatedStaff.IsActive;
+
+            _context.Staffs.Update(staff);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Staff updated successfully!";
+            return RedirectToAction("StaffList");
+        }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid id)
@@ -241,11 +272,10 @@ namespace CarRentalMS.Web.Controllers
             var staff = await _context.Staffs.FindAsync(id);
             if (staff == null) return NotFound();
 
-            staff.IsActive = false;
-            _context.Staffs.Update(staff);
+            _context.Staffs.Remove(staff);
             await _context.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Staff deactivated.";
+            TempData["SuccessMessage"] = "Staff deleted successfully!";
             return RedirectToAction("StaffList");
         }
     }

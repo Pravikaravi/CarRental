@@ -12,6 +12,7 @@ wwwroot\images\BMW.png
 wwwroot\images\BMWBlack.png
 wwwroot\images\driver.png
 wwwroot\images\f49091e7-3946-4136-969f-8c94c0c0c332.png
+wwwroot\images\ff4e5b1d-2bae-410b-bd91-fa427cf64a1e.png
 wwwroot\images\Honda-Accord.png
 wwwroot\images\honda.png
 wwwroot\images\HondaCivic2.png
@@ -22,6 +23,7 @@ wwwroot\images\Pravi1.jpg
 wwwroot\images\Pravi2.jpg
 wwwroot\images\Profile.png
 wwwroot\images\RRR.jpg
+wwwroot\images\Staff.png
 wwwroot\images\suv.png
 wwwroot\images\team-avengers.jpeg
 wwwroot\images\tesla.png
@@ -88,10 +90,12 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\00a1ca75-d08d-4e5b-a021-6764dcc065a8.jpg
 wwwroot\uploads\03908efe-fbca-4bfb-9245-0e0fa08e4dfc.jpg
 wwwroot\uploads\0da6e353-16c2-4047-8d7d-3133e6d18710.png
 wwwroot\uploads\1000123251.png
 wwwroot\uploads\12e6cb78-fb82-41db-80f7-1aa31a818e3c.jpg
+wwwroot\uploads\20249694-2bfd-4ed1-babb-b772b8c6421c.jpg
 wwwroot\uploads\292ef189-c4c6-4953-8855-d96081bccbc6.jpg
 wwwroot\uploads\2de78295-f3c0-49f1-a89d-24360ef4d0e9.jpg
 wwwroot\uploads\3771edf1-321e-44c9-a231-faf2414d1e9d.png
@@ -103,6 +107,7 @@ wwwroot\uploads\5aac4783-e6fa-4bb3-8cdd-26d3c70d73f1.png
 wwwroot\uploads\745f06e8-9dba-4591-8779-de29cf09994b.png
 wwwroot\uploads\77a37992-5253-4b3b-8d42-802ef85230b7.jpeg
 wwwroot\uploads\79278bd0-ddc2-437a-a711-3fe09c59a06a.jpg
+wwwroot\uploads\7e19285c-0ccc-451d-ba25-4b03206d34e2.jpg
 wwwroot\uploads\831babbc-7969-4b79-94a7-924a812a9968.jpeg
 wwwroot\uploads\892977bc-2ec4-4ba0-817a-001e6ff78065.png
 wwwroot\uploads\8db3d64a-62ad-4774-9297-788956e64c3a.png
@@ -111,6 +116,7 @@ wwwroot\uploads\8fe6f8d2-66a9-4533-af2f-9de435b47235.jpg
 wwwroot\uploads\98db5d3a-55d3-454d-8130-70d7730885c6.png
 wwwroot\uploads\a1adad47-1f39-4888-990a-cf57383eb1c3.png
 wwwroot\uploads\a841de87-2864-4134-811b-b77948ed561e.png
+wwwroot\uploads\ab56152c-079a-47e2-95af-ec657ce7c949.jpg
 wwwroot\uploads\c6bdde93-7ac3-4d54-8f73-60bc9f16d2fc.jpg
 wwwroot\uploads\cb04d940-f9d5-4955-9c2c-9a22633f4b94.png
 wwwroot\uploads\cdfdf4ee-7b8d-47e5-8731-44647cc717e7.png

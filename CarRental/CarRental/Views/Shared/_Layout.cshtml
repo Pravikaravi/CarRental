@@ -283,9 +283,9 @@
 
             <a class="nav-link" asp-controller="Home" asp-action="Contactus">Contact Us</a>
             <a class="nav-link" asp-controller="Home" asp-action="Aboutus">About Us</a>
-            <div class="notifications">
+            @* <div class="notifications">
                 <img src="~/Images/1157000.png" alt="Notifications Bell" style="height: 30px;">
-            </div>
+            </div> *@
 
             <!-- Profile -->
             <div class="profile">
@@ -295,7 +295,22 @@
                     var role = Context.Session.GetString("Role");
                     var username = email.Contains("@") ? email.Split('@')[0] : email;
                     var profilePic = Context.Session.GetString("ProfilePic");
-                    var displayPic = !string.IsNullOrEmpty(profilePic) ? profilePic : "~/Images/User.png";
+                    @* var displayPic = !string.IsNullOrEmpty(profilePic) ? profilePic : "~/Images/User.png"; *@
+
+                    string displayPic;
+        if (role == "Staff")
+        {
+            displayPic = Url.Content("~/Images/Staff.png"); // hardcoded staff image
+        }
+        else if (role == "Customer")
+        {
+            displayPic = Url.Content("~/Images/User.png"); // hardcoded customer image
+        }
+        else
+        {
+            displayPic = Url.Content("~/Images/admin-default.png"); // admin default
+        }
+
 
                     <div class="avatar-container">
     <img src="@displayPic" alt="Avatar" class="avatar" />
